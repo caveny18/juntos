@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Juntos — Momentos que se sienten</title>
+  <meta name="description" content="Juntos: experiencias y piezas únicas hechas a mano. Fogatas en casa, arte y momentos para compartir.">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Fondo (puedes dejarlo así o luego animarlo con JS) -->
+  <canvas id="bg" class="bg" aria-hidden="true"></canvas>
+
+  <!-- Header -->
+  <header class="site-header">
+    <a class="brand" href="#productos" aria-label="Inicio Juntos">
+      <span class="brand__logo" aria-hidden="true">❤</span>
+      <span class="brand__text">Juntos</span>
+    </a>
+    <nav class="nav">
+      <a href="#productos">Productos</a>
+      <a href="#about">Quiénes somos</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <button class="nav__toggle" aria-label="Abrir menú">☰</button>
+  </header>
+  <!-- =======================
+       3) HERO (debajo)
+       ======================= -->
+  <section id="hero" class="hero reveal">
+    <div class="hero__content">
+      <h2>Regala <span class="highlight">arte</span> y <span class="highlight">momentos</span></h2>
+      <p class="lead">Experiencias hechas a mano para compartir en casa, en la playa o donde quieran. Todo listo para encender recuerdos.</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="#productos">Ver productos</a>
+        <a class="btn btn--ghost" href="#about">Conócenos</a>
+      </div>
+    </div>
+    <div class="hero__media">
+  <video autoplay muted loop playsinline controls>
+    <source src="recursos/copy_0655E4F4-E5FD-44EE-80B9-31838F805301.mov" type="video/mp4">
+    Tu navegador no soporta video HTML5.
+  </video>
+</div>
+
+  </section>
+
+<main>
+  <!-- =======================
+       1) PRODUCTOS (arriba)
+       ======================= -->
+  <section id="productos" class="productos container reveal">
+    <div class="section-head">
+      <h1 class="productos__title">Productos</h1>
+      <p>Empieza por nuestras fogatas para casa. Más experiencias llegan pronto. ⚡️</p>
+    </div>
+
+    <div class="grid">
+      <!-- Card: Fogata en casa -->
+      <article class="card product">
+        <a class="card__media" href="#modal-fogata">
+          <img loading="lazy" src="recursos/fogatayahecha.jpg" alt="Fogata artesanal para casa con kit completo" />
+          <span class="pill">Nuevo</span>
+        </a>
+        <div class="card__body">
+          <h3>Fogata en casa</h3>
+          <p class="price">S/ <strong>127</strong></p>
+          <p class="desc">Pieza de arte funcional + kit para encender y compartir s’mores o momentos de conversación. Reutilizable y segura.</p>
+        </div>
+        <div class="card__actions">
+          <a class="btn btn--primary" href="#modal-fogata">Ver más</a>
+        </div>
+      </article>
+
+      <!-- Placeholders -->
+      <article class="card product product--disabled" aria-disabled="true">
+        <div class="card__media">
+          <img loading="lazy" src="recursos//logo.png" alt="Tarjeta de experiencia próximamente" />
+          <span class="pill pill--ghost">Próximamente</span>
+        </div>
+        <div class="card__body">
+          <h3>Experiencia #2</h3>
+          <p class="desc">Muy pronto: otra forma de celebrar Juntos.</p>
+        </div>
+        <div class="card__actions">
+          <button class="btn btn--ghost" disabled>Disponible más adelante</button>
+        </div>
+      </article>
+
+      <article class="card product product--disabled" aria-disabled="true">
+        <div class="card__media">
+          <img loading="lazy" src="recursos/logo.png" alt="Tarjeta de experiencia próximamente" />
+          <span class="pill pill--ghost">Próximamente</span>
+        </div>
+        <div class="card__body">
+          <h3>Experiencia #3</h3>
+          <p class="desc">Otra caja para atesorar momentos.</p>
+        </div>
+        <div class="card__actions">
+          <button class="btn btn--ghost" disabled>Disponible más adelante</button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- =======================
+       2) QUIÉNES SOMOS (abajo de productos)
+       ======================= -->
+  <section id="about" class="about-mw section reveal">
+    <div class="mw-row">
+      <figure class="mw-media slider mw-fade">
+        <div class="mw-slides">
+          <img src="recursos/happi1.jpg" alt="Ynes Cabrera en su taller">
+          <img src="recursos/juntos.png" alt="Ynes Cabrera pintando">
+          <img src="recursos/happi2.jpg" alt="Ynes Cabrera con una obra">
+        </div>
+        <a class="mw-ig" href="https://www.instagram.com/junto_speru?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener">
+          <span class="mw-ig__icon">📷</span> @Juntos.Perú
+        </a>
+      </figure>
+
+      <div class="mw-copy">
+<span class="mw-eyebrow">ACERCA DE NOSOTROS</span>
+<h2>Juntos: experiencias que fortalecen</h2>
+<p>
+  Somos <strong>una empresa madre e hijo</strong> que transforma el arte en
+  <strong>cajas de experiencias</strong>. Cada pieza y cada dinámica nace para
+  crear momentos de unión en el hogar, ya sea entre parejas, amigos o familia.
+</p>
+<p>
+  En <strong>Juntos</strong> creemos que no hay nada igual: mientras otros
+  productos son regalos unilaterales, nuestras experiencias son <em>bilaterales</em>,
+  porque se viven de a dos y generan cercanía real.
+</p>
+<p>
+  Nuestro sueño es <strong>fortalecer las relaciones de las personas</strong> con
+  detalles alcanzables en casa, para que se preparen hoy y sean más fuertes en
+  las tormentas de mañana.
+</p>
+
+        <a class="btn-solid" href="https://www.instagram.com/junto_speru?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener">Ver Instagram</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- TESTIMONIOS -->
+  <section class="testimonios reveal">
+    <div class="container">
+      <h2>Lo que dicen de Juntos</h2>
+      <div class="quotes">
+        <figure class="quote">
+          <blockquote>
+            “Encendimos la fogata en nuestra sala y terminamos conversando por horas.
+            Fue un momento único, sin pantallas, solo nosotros.”
+          </blockquote>
+          <figcaption>— Mariana y Diego</figcaption>
+        </figure>
+        <figure class="quote">
+          <blockquote>
+            “Se siente especial porque no es un regalo que se guarda en un cajón,
+            sino una experiencia que compartes y recuerdas.”
+          </blockquote>
+          <figcaption>— Valeria</figcaption>
+        </figure>
+        <figure class="quote">
+          <blockquote>
+            “Me encantó porque además de bonita como pieza decorativa,
+            nos dio una excusa para reunir a mis amigos un viernes en casa.”
+          </blockquote>
+          <figcaption>— Jimena</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="faq container reveal">
+    <h2>Preguntas frecuentes</h2>
+    <details>
+      <summary>¿La fogata es reutilizable?</summary>
+      <p>Sí. Está diseñada para encenderse en varias ocasiones siguiendo las instrucciones del kit.</p>
+    </details>
+    <details>
+      <summary>¿Es segura?</summary>
+      <p>
+        Sí. Incluimos una guía clara y materiales pensados para un uso doméstico responsable.
+        Siempre recomendamos encenderla en espacios ventilados.
+      </p>
+    </details>
+    <details>
+      <summary>¿Hacen envíos?</summary>
+      <p>
+        Sí, hacemos envíos en Lima y provincias. Escríbenos por WhatsApp y te confirmamos
+        cobertura y costos de envío.
+      </p>
+    </details>
+    <details>
+      <summary>¿Qué incluye la caja?</summary>
+      <p>
+        Cada caja incluye la pieza de arte (fogata), kit de encendido,Kit para hacer Smore's, certificado de autenticidad
+        y una dinámica para compartir en pareja o en familia.
+      </p>
+    </details>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="contacto reveal">
+    <div class="container contacto__box">
+      <h2>¿Listo para crear momentos?</h2>
+      <p>
+        Escríbenos por WhatsApp y te ayudamos a elegir o personalizar tu experiencia.
+      </p>
+      <a class="btn btn--primary"
+         href="https://api.whatsapp.com/message/4VXZPW2XW7JHJ1?autoload=1&app_absent=0"
+         target="_blank" rel="noopener">
+        Hablar por WhatsApp
+      </a>
+      <p style="margin-top:12px; font-size:14px; color:var(--muted);">
+        También puedes escribirnos a <a href="https://api.whatsapp.com/message/4VXZPW2XW7JHJ1?autoload=1&app_absent=0">hola@juntos.pe</a>
+      </p>
+    </div>
+  </section>
+</main>
+
+  <!-- MODAL CSS-ONLY: Fogata -->
+  <div id="modal-fogata" class="modal">
+    <div class="modal__box" role="dialog" aria-modal="true" aria-labelledby="fogata-title">
+      <a class="modal__close" href="#" aria-label="Cerrar">×</a>
+      <div class="modal__grid">
+        <div class="modal__media">
+          <video controls autoplay muted loop playsinline class="modal__video">
+  <source src="recursos/copy_465718FD-0428-429F-A89E-52B852248E97.mov" type="video/mp4">
+  Tu navegador no soporta video HTML5.
+</video>
+
+        </div>
+        <div class="modal__text">
+          <h3 id="fogata-title">Fogata en casa — <span>S/ 127</span></h3>
+          <ul class="bullets">
+            <li>Pieza de arte funcional hecha a mano</li>
+            <li>Kit para encendido + guía paso a paso</li>
+            <li>Kit para preparar tus primeros Smore's</li>
+            <li>Un dibujo de regalo del artista</li>
+            <li>Certificado de autenticidad</li>
+            <li>Ideal para s’mores, historias y música</li>
+          </ul>
+          <div class="modal__actions">
+            <a class="btn btn--primary" href="https://api.whatsapp.com/message/4VXZPW2XW7JHJ1?autoload=1&app_absent=0" target="_blank" rel="noopener">Comprar por WhatsApp</a>
+            <a class="btn btn--ghost" href="dinamica.html">Ver dinámica</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer__grid">
+      <p>© <span id="year"></span> Juntos — Hecho a mano en Perú</p>
+      <nav class="footer__nav">
+        <a href="#productos">Productos</a>
+        <a href="#about">Quiénes somos</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

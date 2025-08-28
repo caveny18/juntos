@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dinámicas — Juntos | Fogata en casa</title>
+  <meta name="description" content="Ideas de dinámicas para disfrutar tu Fogata en casa con familia, amigos, pareja o tú mismo.">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --brand:#ff4d6d;          /* Coral Juntos */
+      --brand-2:#ff8fa3;        /* Coral claro */
+      --ink:#0f0f10;            /* Gris carbón */
+      --card:#151518;
+      --cream:#fff7f8;          /* Crema cálida */
+      --muted:#9aa0a6;
+      --ok:#94f2c2;             /* acentos suaves */
+      --sky:#d6e8ff;
+      --lav:#f1e6ff;
+      --max:1100px;
+      --shadow:0 14px 40px rgba(0,0,0,.25);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html:focus-within{scroll-behavior:smooth}
+    body{
+      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:#fff; background:
+        radial-gradient(1200px 800px at 20% 15%, #1b1c20, #0f0f12 60%),
+        linear-gradient(180deg, #141418, #0f0f12);
+    }
+
+    /* Header */
+    .site-header{
+      position:sticky; top:0; z-index:50;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:18px; padding:14px min(4vw,28px);
+      background:rgba(16,16,18,.55); backdrop-filter:saturate(140%) blur(8px);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .brand{display:flex; align-items:center; gap:10px; text-decoration:none; color:#fff; font-weight:800}
+    .brand__logo{display:grid; place-items:center; width:34px; height:34px; border-radius:12px; background:var(--brand); color:#111; font-size:18px}
+    .brand__text{letter-spacing:.2px}
+    .nav{display:flex; gap:14px}
+    .nav a{color:#fff; text-decoration:none; padding:8px 12px; border:1px solid rgba(255,255,255,.08); border-radius:10px; font-weight:700}
+    .nav a:hover{border-color:rgba(255,255,255,.22)}
+
+    /* Info band */
+    .info-band{
+      width:100%; background:linear-gradient(180deg, #1a1a1d, #17171a);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:18px; padding:18px;
+    }
+    .intro{
+      max-width:var(--max); margin:18px auto; padding:0 min(4vw,28px);
+      display:grid; gap:12px;
+    }
+    .intro h1{
+      margin:0; font-size:clamp(20px,2.4vw,26px); font-weight:800; letter-spacing:.2px
+    }
+    .intro p{margin:0; color:var(--muted)}
+
+    /* Grid 4 columnas */
+    .sections{
+      max-width:var(--max); margin:18px auto 40px; padding:0 min(4vw,28px);
+      display:grid; grid-template-columns:repeat(4, 1fr); gap:18px;
+    }
+
+    /* Columna */
+    .col{
+      background:linear-gradient(180deg, #1a1a1d, #17171a);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:var(--radius); box-shadow:var(--shadow);
+      overflow:hidden; display:grid; grid-template-rows:auto 1fr auto;
+      min-height:520px;
+    }
+
+    /* Encabezado de columna con tags */
+    .col__head{
+      padding:14px; display:flex; align-items:center; justify-content:center; gap:10px;
+      background:rgba(255,255,255,.02); border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .tag{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px; border-radius:999px; font-weight:800; letter-spacing:.2px;
+      border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.05)
+    }
+    .tag--fam{background:linear-gradient(180deg,#ffe9ed,#ffd7e1); color:#451818; border-color:#ffd0da}
+    .tag--ami{background:linear-gradient(180deg,#e9f3ff,#d6e8ff); color:#12223a; border-color:#cbe0ff}
+    .tag--par{background:linear-gradient(180deg,#f4eaff,#eee1ff); color:#281a3a; border-color:#e3d6ff}
+    .tag--yo {background:linear-gradient(180deg,#e8fff5,#d8ffe9); color:#153829; border-color:#c7f7df}
+
+    /* Contenido de ideas */
+    .ideas{padding:14px; display:grid; gap:12px}
+    .idea{
+      background:#121214; border:1px solid rgba(255,255,255,.08);
+      border-radius:14px; padding:14px; display:grid; gap:8px;
+    }
+    .idea h3{margin:0; font-size:16px}
+    .idea p{margin:0; color:var(--muted); font-size:14px}
+    .badge{font-size:12px; font-weight:800; color:#111; background:var(--ok); border-radius:999px; padding:4px 8px; width:max-content}
+
+    /* CTA base por columna */
+    .col__cta{
+      padding:14px; display:flex; justify-content:center; gap:10px; flex-wrap:wrap;
+      border-top:1px solid rgba(255,255,255,.06);
+      background:linear-gradient(180deg, rgba(255,77,109,.08), rgba(255,77,109,.0));
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      border-radius:12px; padding:12px 14px; text-decoration:none;
+      border:1px solid rgba(255,255,255,.14); color:#fff; font-weight:800; letter-spacing:.2px;
+    }
+    .btn--primary{background:var(--brand); border-color:transparent; color:#111}
+    .btn--ghost{background:transparent}
+    .btn:hover{filter:brightness(1.05) saturate(1.02)}
+
+    /* Fajas de color bajo cada columna (sutil) */
+    .col--fam{box-shadow:0 18px 60px rgba(255,143,163,.18)}
+    .col--ami{box-shadow:0 18px 60px rgba(214,232,255,.16)}
+    .col--par{box-shadow:0 18px 60px rgba(241,230,255,.16)}
+    .col--yo {box-shadow:0 18px 60px rgba(148,242,194,.16)}
+
+    /* Footer */
+    .site-footer{max-width:var(--max); margin:30px auto 50px; padding:0 min(4vw,28px); color:var(--muted); text-align:center}
+
+    /* Responsive */
+    @media (max-width: 1100px){
+      .sections{grid-template-columns:repeat(2, 1fr)}
+    }
+    @media (max-width: 640px){
+      .nav{display:none}
+      .sections{grid-template-columns:1fr}
+      .col{min-height:unset}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <a class="brand" href="juntos.html" aria-label="Volver a Juntos">
+      <span class="brand__logo">❤</span>
+      <span class="brand__text">Juntos</span>
+    </a>
+    <nav class="nav">
+      <a href="juntos.html">Home</a>
+      <a href="#familia">Familia</a>
+      <a href="#amigos">Amigos</a>
+      <a href="#pareja">Pareja</a>
+      <a href="#tuyo">Tú mismo</a>
+    </nav>
+  </header>
+
+<!-- Banda de información del producto -->
+<section class="intro">
+  <div class="info-band">
+    <h1>
+      Disfruta tu <span style="background:linear-gradient(90deg,var(--brand),var(--brand-2));
+        -webkit-background-clip:text;background-clip:text;color:transparent">Fogata en casa</span>
+    </h1>
+    <p>
+      Cada fogata viene con kit de encendido y certificado de autenticidad. Aquí tienes
+      ideas de dinámicas reales para 4 situaciones: familia, amigos, pareja y tiempo para ti.
+      Elige una, prepara los ingredientes y enciendan recuerdos ✨.
+    </p>
+
+    <!-- Botón nuevo -->
+    <div style="margin-top:16px; display:flex; flex-wrap:wrap; gap:12px;">
+      <a class="btn btn--primary"
+         href="https://caveny18.github.io/pagina-de-arte/escultura-ceramica.html"
+         target="_blank" rel="noopener">
+        Conoce más de la pieza y el artista →
+      </a>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Cuatro columnas -->
+  <section class="sections">
+    <!-- FAMILIA -->
+    <article id="familia" class="col col--fam">
+      <div class="col__head">
+        <span class="tag tag--fam">Familia</span>
+      </div>
+      <div class="ideas">
+        <div class="idea">
+          <div class="badge">dinámica</div>
+          <h3>“Tres historias y un objeto”</h3>
+          <p>Cada uno comparte una historia familiar relacionada con un objeto de la casa. La fogata
+          se enciende al comenzar y el objeto pasa de mano en mano mientras se cuentan anécdotas.</p>
+        </div>
+        <div class="idea">
+          <div class="badge">dinámica</div>
+          <h3>Reto s’mores por edades</h3>
+          <p>Niños, jóvenes y adultos arman su versión de s’more. Se prueban a ciegas y se elige
+          el favorito de la noche. Puntos extra por decoración creativa.</p>
+        </div>
+        <div class="idea">
+          <div class="badge">dinámica</div>
+          <h3>Frasco de gratitud</h3>
+          <p>Mientras arde la fogata, todos escriben 3 cosas por las que agradecen a otro miembro
+          de la familia. Se leen en voz alta antes de apagar.</p>
+        </div>
+      </div>
+      <div class="col__cta">
+        <a class="btn btn--ghost" href="#amigos">Ver otra categoría</a>
+        <a class="btn btn--primary" href="https://api.whatsapp.com/message/4VXZPW2XW7JHJ1?autoload=1&app_absent=0" target="_blank" rel="noopener">Quiero mi fogata</a>
+      </div>
+    </article>
+
+    <!-- AMIGOS -->
+    <article id="amigos" class="col col--ami">
+      <div class="col__head">
+        <span class="tag tag--ami">Amigos</span>
+      </div>
+      <div class="ideas">
+        <div class="idea">
+          <div class="badge">dinámica</div>
+          <h3>“Playlist Asada”</h3>
+          <p>Cada amigo elige una canción que le recuerde a otro del grupo y cuenta por qué
+          mientras tuesta un marshmallow. Al final queda una playlist del recuerdo.</p>
+        </div>
+        <div class="idea">
+          <div class="badge">dinámica</div>
+          <h3>Historias de 2 minutos</h3>
+          <p>Con un temporizador, cada uno tiene 2 minutos para contar una historia épica o
+          vergonzosa. Si se pasa del tiempo, cede su s’more a otro 😅.</p>
+        </div>
+        <div class="idea">
+          <div class="badge">dinámica</div>
+          <h3>Fogata viajera</h3>
+          <p>Traigan recuerdos pequeños de viajes (tickets, llaveros). Muestran uno y cuentan
+          el micro–relato detrás mientras comparten la fogata.</p>
+        </div>
+      </div>
+      <div class="col__cta">
+        <a class="btn btn--ghost" href="#pareja">Ver otra categoría</a>
+        <a class="btn btn--primary" href="https://api.whatsapp.com/message/4VXZPW2XW7JHJ1?autoload=1&app_absent=0" target="_blank" rel="noopener">Quiero mi fogata</a>
+      </div>
+    </article>
+
+    <!-- PAREJA -->
+    <article id="pareja" class="col col--par">
+      <div class="col__head">
+        <span class="tag tag--par">Pareja</span>
+      </div>
+      <div class="ideas">
+        <div class="idea">
+          <div class="badge">dinámica</div>
+          <h3>“Primera vez”</h3>
+          <p>Hagan s’mores como si fuera la primera cita: preguntas rápidas (lo favorito del día,
+          un sueño, un miedo, algo que admiro de ti). Cada respuesta, un bocado.</p>
+        </div>
+        <div class="idea">
+          <div class="badge">dinámica</div>
+          <h3>Mapa de recuerdos</h3>
+          <p>En un papel, dibujen un mapa con 5 lugares que marcan su historia. Por cada lugar,
+          una anécdota corta junto al fuego.</p>
+        </div>
+        <div class="idea">
+          <div class="badge">dinámica</div>
+          <h3>Promesas pequeñas</h3>
+          <p>Escriban 3 promesas realistas para esta semana (detalles, no grandes planes).
+          Doblen las notas y guárdenlas en la caja hasta la próxima fogata.</p>
+        </div>
+      </div>
+      <div class="col__cta">
+        <a class="btn btn--ghost" href="#tuyo">Ver otra categoría</a>
+        <a class="btn btn--primary" href="https://api.whatsapp.com/message/4VXZPW2XW7JHJ1?autoload=1&app_absent=0" target="_blank" rel="noopener">Quiero mi fogata</a>
+      </div>
+    </article>
+
+    <!-- TÚ MISMO -->
+    <article id="tuyo" class="col col--yo">
+      <div class="col__head">
+        <span class="tag tag--yo">Tú mismo</span>
+      </div>
+      <div class="ideas">
+        <div class="idea">
+          <div class="badge">dinámica</div>
+          <h3>Ritual de descanso</h3>
+          <p>Mientras se enciende la fogata, anota 3 cosas que puedas soltar hoy. Respira profundo,
+          guarda el papel en la caja y permítete 20 minutos de calma.</p>
+        </div>
+        <div class="idea">
+          <div class="badge">dinámica</div>
+          <h3>S’more de metas</h3>
+          <p>Define una meta pequeña de 7 días. Cada bocado es un paso: hoy plan, mañana
+          primer micro–paso, etc. Cierra la noche con una canción que te motive.</p>
+        </div>
+        <div class="idea">
+          <div class="badge">dinámica</div>
+          <h3>Lectura al fuego</h3>
+          <p>Elige un texto corto (poema, fragmento de libro) y léelo en voz alta. Escribe una
+          idea que te deje y pégala en la tapa interior de la caja.</p>
+        </div>
+      </div>
+      <div class="col__cta">
+        <a class="btn btn--ghost" href="#familia">Volver arriba</a>
+        <a class="btn btn--primary" href="https://api.whatsapp.com/message/4VXZPW2XW7JHJ1?autoload=1&app_absent=0" target="_blank" rel="noopener">Quiero mi fogata</a>
+      </div>
+    </article>
+  </section>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Juntos — Hecho a mano en Perú • <a href="juntos.html" style="color:#fff;text-decoration:none;border-bottom:1px dashed rgba(255,255,255,.35)">Volver al Home</a></p>
+  </footer>
+
+  <script>
+    document.querySelectorAll("#year").forEach(n=>n.textContent=new Date().getFullYear());
+  </script>
+</body>
+</html>
