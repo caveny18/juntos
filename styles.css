@@ -226,6 +226,15 @@ body{
 .btn--primary:hover{filter:saturate(110%) brightness(1.02)}
 .btn--ghost{background:transparent; color:#fff; border-color:rgba(255,255,255,.16)}
 .btn--ghost:hover{border-color:rgba(255,255,255,.32)}
+.btn--whatsapp{
+  background-color: #25D366;   /* verde WhatsApp */
+  color: #fff;                 /* texto blanco */
+  border-color: #25D366;
+}
+.btn--whatsapp:hover{
+  background-color: #20ba57;   /* verde más oscuro al pasar */
+  border-color: #20ba57;
+}
 
 /* =========================
    Modal (si usas <dialog>)
@@ -444,6 +453,18 @@ body{
   border: 1px solid rgba(255,255,255,.18);
   backdrop-filter: blur(6px);
 }
+.modal__close{
+  width: 44px; height: 44px;           /* área de toque grande */
+  display: grid; place-items: center;  /* centra la X */
+}
+@media (max-width: 768px){
+  .modal__close{
+    position: fixed; /* no absolute */
+    top: calc(env(safe-area-inset-top, 0px) + 10px);
+    right: calc(env(safe-area-inset-right, 0px) + 12px);
+  }
+}
+
 
 /* Animación sutil */
 @keyframes modal-pop{
@@ -745,6 +766,4 @@ body{
 @media (max-width: 640px){
   .mw-media{aspect-ratio: 16 / 10;}  /* un poco más panorámica en móvil */
 }
-
-
 
