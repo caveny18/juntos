@@ -65,34 +65,38 @@
 
     <div class="grid">
       <!-- Card: Fogata en casa -->
-      <article class="card product">
-        <a class="card__media" href="#modal-fogata">
-          <img loading="lazy" src="recursos/fogatayahecha.jpg" alt="Fogata artesanal para casa con kit completo" />
-          <span class="pill">Nuevo</span>
-        </a>
-        <div class="card__body">
-          <h3>Fogata en casa</h3>
-          <p class="price">S/ <strong>127</strong></p>
-          <p class="desc">Pieza de arte funcional + kit para encender y compartir s’mores o momentos de conversación. Reutilizable y segura.</p>
-        </div>
-        <div class="card__actions">
-          <a class="btn btn--primary" href="#modal-fogata">Ver más</a>
-        </div>
-      </article>
+     <article class="card product">
+       <a class="card__media" href="https://caveny18.github.io/pagina-de-arte/escultura-ceramica.html" target="_blank" rel="noopener">
+         <img loading="lazy" src="recursos/fogatayahecha.jpg" alt="Fogata artesanal para casa con kit completo" />
+         <span class="pill">Nuevo</span>
+       </a>
+       <div class="card__body">
+         <h3>Fogata en casa</h3>
+         <p class="price">S/ <strong>127</strong></p>
+        <p class="desc">Pieza de arte funcional + kit para encender y compartir s’mores o momentos de conversación. Reutilizable y segura.</p>
+       </div>
+       <div class="card__actions">
+         <a class="btn btn--ghost" href="https://caveny18.github.io/pagina-de-arte/escultura-ceramica.html" target="_blank" rel="noopener">Catálogo</a>
+         <a class="btn btn--ghost" href="https://caveny18.github.io/juntos/dinamica" target="_blank" rel="noopener">info. del kit</a>
+         <a class="btn btn--primary" href="https://api.whatsapp.com/message/4VXZPW2XW7JHJ1?autoload=1&app_absent=0" target="_blank" rel="noopener">Comprar</a>
+       </div>
+     </article>
+
 
       <!-- Placeholders -->
-      <article class="card product product--disabled" aria-disabled="true">
+      <article class="card product">
         <div class="card__media">
-          <img loading="lazy" src="recursos//logo.png" alt="Tarjeta de experiencia próximamente" />
-          <span class="pill pill--ghost">Próximamente</span>
+          <img loading="lazy" src="recursos//yeso.webp" alt="Tarjeta de experiencia próximamente" />
+
         </div>
         <div class="card__body">
-          <h3>Experiencia #2</h3>
-          <p class="desc">Muy pronto: otra forma de celebrar Juntos.</p>
-        </div>
-        <div class="card__actions">
-          <button class="btn btn--ghost" disabled>Disponible más adelante</button>
-        </div>
+          <h3>Manos por la eternidad</h3>
+          <p class="price">S/ <strong>70</strong></p>
+          <p class="desc">Las manos por la eternidad es una experiencia única para inmortalizar lo que más importa: la unión. Con este kit de yeso podrás crear, junto a tu pareja o seres queridos, una escultura realista de sus manos entrelazadas o como desees. Una pieza artesanal hecha por ustedes mismos, símbolo tangible de amor, amistad y complicidad que quedará para siempre.</p>
+       <div class="card__actions">
+         <a class="btn btn--ghost" href="https://caveny18.github.io/juntos/dinamica" target="_blank" rel="noopener">info. del kit</a>
+         <a class="btn btn--primary" href="https://api.whatsapp.com/message/4VXZPW2XW7JHJ1?autoload=1&app_absent=0" target="_blank" rel="noopener">Comprar</a>
+       </div>
       </article>
 
       <article class="card product product--disabled" aria-disabled="true">
@@ -246,13 +250,20 @@
         <div class="modal__text">
           <h3 id="fogata-title">Fogata en casa — <span>S/ 127</span></h3>
           <ul class="bullets">
-            <li>Pieza de arte funcional hecha a mano</li>
-            <li>Kit para encendido + guía paso a paso</li>
-            <li>Kit para preparar tus primeros Smore's</li>
-            <li>Un dibujo de regalo del artista</li>
-            <li>Certificado de autenticidad</li>
-            <li>Ideal para s’mores, historias y música</li>
-          </ul>
+           <li>Pieza de arte funcional hecha a mano</li>
+           <li>Kit para encendido + guía paso a paso</li>
+           <li>Kit para preparar tus primeros s’mores</li>
+          <li>Un dibujo de regalo del artista</li>
+          <li>Certificado de autenticidad</li>
+          <li>Ideal para s’mores, historias y música</li>
+         </ul>
+         <div class="product-sizes"></div>
+         <h4>📏 Medidas disponibles</h4>
+         <ul><li><strong>Modelo clásico:</strong> 18 cm diámetro × 8.5 cm alto</li>
+        <li><strong>Modelo corte diagonal:</strong> 17 cm diámetro × 18 cm alto</li>
+        </ul>
+      </div>
+    </div>
           <div class="modal__actions">
             <a class="btn btn--primary" href="https://api.whatsapp.com/message/4VXZPW2XW7JHJ1?autoload=1&app_absent=0" target="_blank" rel="noopener">Comprar por WhatsApp</a>
             <a class="btn btn--ghost" href="dinamica.html">Ver dinámica</a>
@@ -273,5 +284,40 @@
       </nav>
     </div>
   </footer>
+  <script>
+  (function () {
+    const btn = document.querySelector('.nav__toggle');
+    const nav = document.querySelector('.nav');
+    if (!btn || !nav) return;
+
+    function toggleNav() {
+      const open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      document.body.classList.toggle('no-scroll', open);
+    }
+
+    btn.addEventListener('click', toggleNav);
+
+    // Cierra al tocar un link del menú
+    nav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        nav.classList.remove('open');
+        document.body.classList.remove('no-scroll');
+        btn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Cierra al tocar fuera del menú
+    document.addEventListener('click', (e) => {
+      if (!nav.classList.contains('open')) return;
+      if (!nav.contains(e.target) && e.target !== btn) {
+        nav.classList.remove('open');
+        document.body.classList.remove('no-scroll');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
+</script>
+
 </body>
 </html>

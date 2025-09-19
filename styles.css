@@ -338,6 +338,91 @@ body{
 .mw-slides img:nth-child(2){ animation-delay: 6s; }
 .mw-slides img:nth-child(3){ animation-delay: 12s; }
 
+
+/* ===== Ficha técnica ordenada (pro) ===== */
+.product-info.pro{ max-width:var(--max); margin:18px auto 28px; padding:0 min(4vw,28px); }
+.pro__wrap{
+  background:linear-gradient(180deg, #1a1a1d, #17171a);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:18px;
+}
+
+.pro__head{ display:grid; gap:6px; margin-bottom:12px; }
+.pro__head h2{ margin:0; font-size:clamp(20px,2.2vw,24px); }
+.pro__desc{ margin:0; color:var(--muted); }
+
+.pro__grid{
+  display:grid;
+  grid-template-columns: 1.15fr .85fr;   /* texto > imágenes */
+  gap:18px;
+  align-items:start;
+}
+
+.pro__col{ display:grid; gap:12px; }
+.pro__box{
+  background:#121214;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:14px;
+  padding:14px;
+}
+.pro__sub{ margin:0 0 8px; font-size:16px; font-weight:800; }
+.pro__sizes{ display:flex; gap:8px; flex-wrap:wrap; margin:0 0 6px; }
+.chip{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:6px 10px; border-radius:999px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.14);
+  font-weight:800; letter-spacing:.2px; font-size:13px; color:#fff;
+}
+.chip--hot{ background:var(--brand); color:#111; border-color:transparent; }
+.pro__hint{ margin:6px 0 0; color:var(--muted); font-size:12px; }
+
+.pro__list{ margin:0; padding-left:18px; }
+.pro__list li{ margin:6px 0; line-height:1.55; }
+
+/* CTA alineados */
+.pro__cta{ display:flex; gap:10px; flex-wrap:wrap; margin-top:4px; }
+
+/* Columna media (2 imágenes ordenadas) */
+.pro__media{
+  display:grid;
+  grid-template-rows:1fr 1fr;
+  gap:12px;
+}
+.pro__img{
+  position:relative;
+  background:#0f0f12;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 10px 26px rgba(0,0,0,.28);
+  aspect-ratio: 4 / 3;              /* mantiene proporción uniforme */
+}
+.pro__img img{
+  width:100%; height:100%;
+  display:block; object-fit:cover; object-position:center;
+}
+.pro__img figcaption{
+  position:absolute; left:10px; bottom:10px;
+  background:rgba(0,0,0,.4);
+  border:1px solid rgba(255,255,255,.18);
+  backdrop-filter: blur(6px);
+  color:#fff; font-weight:700; font-size:12px;
+  padding:4px 8px; border-radius:10px;
+}
+
+/* Responsive: se apila, imágenes pasan abajo */
+@media (max-width: 880px){
+  .pro__grid{ grid-template-columns:1fr; }
+  .pro__media{ grid-template-columns:1fr 1fr; grid-template-rows:auto; }
+  .pro__img{ aspect-ratio: 3 / 2; }
+}
+@media (max-width: 560px){
+  .pro__media{ grid-template-columns:1fr; }
+}
+
 /* Deja UNA sola versión de esta animación en tu CSS */
 @keyframes mwFade{
   0%{opacity:0} 5%{opacity:1} 30%{opacity:1} 35%{opacity:0} 100%{opacity:0}
@@ -377,9 +462,41 @@ body{
   .mw-row{grid-template-columns:1fr; gap:20px}
   .mw-media{min-height:260px}
 }
+
+
 /* =========================
    MODAL (CSS-only con :target)
    ========================= */
+/* Botón visible y por encima */
+.nav__toggle{
+  display:block;
+  background:none; border:0;
+  font-size:22px; color:#fff; cursor:pointer;
+  z-index:1000;
+}
+
+/* Móvil: menú oculto por defecto, aparece flotante */
+@media (max-width: 640px){
+  .nav{ display:none; }
+  .nav.open{
+    display:flex;
+    position:fixed;              /* se pega a la cabecera */
+    top:64px; right:12px;
+    flex-direction:column;
+    gap:12px;
+    background:var(--card);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:12px;
+    padding:12px;
+    z-index:999;                 /* por encima del contenido */
+    box-shadow:0 10px 30px rgba(0,0,0,.4);
+  }
+  .nav.open a{ padding:8px 6px; }
+  .no-scroll{ overflow:hidden; } /* bloquea scroll al abrir */
+}
+
+/* Asegura que el header quede por encima de todo */
+.site-header{ position:sticky; top:0; z-index:1200; }
 
 /* Capa oscura y centrado */
 .modal{
@@ -532,32 +649,7 @@ body{
   padding:16px;
 }
 
-/* =========================
-   Bloqueo (blur hasta código correcto)
-   ========================= */
-.lock { position:relative; }
-.lock.is-locked .lock__content{
-  filter: blur(8px);
-  pointer-events:none;
-  user-select:none;
-}
-.lock__veil{
-  position:absolute; inset:0;
-  display:flex; align-items:center; justify-content:center;
-  text-align:center;
-  padding:20px;
-  background:linear-gradient(180deg, rgba(15,15,16,.6), rgba(15,15,16,.75));
-  color:#fff;
-  border-radius:14px;
-  opacity:0; pointer-events:none; transition:opacity .2s ease;
-}
-.lock.is-locked .lock__veil{ opacity:1; pointer-events:auto; }
-.lock__veil p{
-  background:rgba(0,0,0,.35);
-  border:1px solid rgba(255,255,255,.18);
-  padding:10px 14px; border-radius:12px; font-weight:700;
-  backdrop-filter: blur(6px);
-}
+
 
 /* =========================
    Modal (reutiliza estilos base si ya tienes)
@@ -766,4 +858,3 @@ body{
 @media (max-width: 640px){
   .mw-media{aspect-ratio: 16 / 10;}  /* un poco más panorámica en móvil */
 }
-

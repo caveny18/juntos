@@ -168,14 +168,155 @@
     <!-- Botón nuevo -->
     <div style="margin-top:16px; display:flex; flex-wrap:wrap; gap:12px;">
       <a class="btn btn--primary"
-         href="https://caveny18.github.io/pagina-de-arte/escultura-ceramica.html"
+         href="https://caveny18.github.io/pagina-de-arte/miperu.html"
          target="_blank" rel="noopener">
         Conoce más de la pieza y el artista →
       </a>
     </div>
   </div>
 </section>
+<!-- =======================
+     FICHA TÉCNICA / PRODUCT INFO
+     ======================= -->
+<section class="product-info pro" aria-labelledby="prod-title">
+  <style>
+    /* ===== Ficha técnica ordenada (inline en el mismo HTML) ===== */
+    .product-info.pro{ max-width:1100px; margin:32px auto; padding:0 24px; }
+    .pro__wrap{
+      background:linear-gradient(180deg, #1a1a1d, #17171a);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:18px;
+      box-shadow:0 10px 30px rgba(0,0,0,.35);
+      padding:22px;
+    }
 
+    .pro__head{ display:grid; gap:6px; margin-bottom:16px; }
+    .pro__head h2{ margin:0; font-size:clamp(20px,2.2vw,26px); color:#fff; }
+    .pro__desc{ margin:0; color:#9aa0a6; }
+
+    .pro__grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;   /* texto > imágenes */
+      gap:22px;
+      align-items:start;
+    }
+
+    .pro__col{ display:grid; gap:16px; }
+    .pro__box{
+      background:#121214;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:14px;
+      padding:16px;
+    }
+    .pro__sub{ margin:0 0 8px; font-size:17px; font-weight:800; color:#fff; }
+    .pro__sizes{ display:flex; gap:8px; flex-wrap:wrap; margin:0 0 6px; }
+    .chip{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:6px 10px; border-radius:999px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.14);
+      font-weight:800; letter-spacing:.2px; font-size:13px; color:#fff;
+    }
+    .chip--hot{ background:#ff4d6d; color:#111; border-color:transparent; }
+    .pro__hint{ margin:6px 0 0; color:#9aa0a6; font-size:12px; }
+
+    .pro__list{ margin:0; padding-left:18px; }
+    .pro__list li{ margin:6px 0; line-height:1.55; color:#f2f3f5; }
+
+    /* CTA alineados */
+    .pro__cta{ display:flex; gap:10px; flex-wrap:wrap; margin-top:4px; }
+
+    /* Columna media (2 imágenes ordenadas) */
+    .pro__media{
+      display:grid;
+      grid-template-rows:1fr 1fr;
+      gap:14px;
+    }
+    .pro__img{
+      position:relative;
+      background:#0f0f12;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:14px;
+      overflow:hidden;
+      box-shadow:0 10px 26px rgba(0,0,0,.28);
+      aspect-ratio: 4 / 3;              /* mantiene proporción uniforme */
+    }
+    .pro__img img{
+      width:100%; height:100%;
+      display:block; object-fit:cover; object-position:center;
+    }
+    .pro__img figcaption{
+      position:absolute; left:10px; bottom:10px;
+      background:rgba(0,0,0,.4);
+      border:1px solid rgba(255,255,255,.18);
+      backdrop-filter: blur(6px);
+      color:#fff; font-weight:700; font-size:12px;
+      padding:4px 8px; border-radius:10px;
+    }
+
+    /* Responsive: se apila, imágenes pasan abajo */
+    @media (max-width: 880px){
+      .pro__grid{ grid-template-columns:1fr; }
+      .pro__media{ grid-template-columns:1fr 1fr; grid-template-rows:auto; }
+      .pro__img{ aspect-ratio: 3 / 2; }
+    }
+    @media (max-width: 560px){
+      .pro__media{ grid-template-columns:1fr; }
+    }
+  </style>
+
+  <div class="pro__wrap">
+    <div class="pro__head">
+      <h2 id="prod-title">Ficha técnica · Fogata en casa</h2>
+      <p class="pro__desc">Medidas, contenido de la caja y dos diseños disponibles.</p>
+    </div>
+
+    <div class="pro__grid">
+      <!-- Columna texto -->
+      <div class="pro__col">
+        <div class="pro__box">
+          <h3 class="pro__sub">📏 Medidas</h3>
+          <div class="pro__sizes">
+            <span class="chip chip--hot">Diseño clásico: 18 × 8.5 cm</span>
+            <span class="chip">Diseño diagonal: 17 × 18 cm</span>
+          </div>
+          <p class="pro__hint">*Hechas a mano: pueden variar las medidas levemente.</p>
+        </div>
+
+        <div class="pro__box">
+          <h3 class="pro__sub">🧰 ¿Qué incluye?</h3>
+          <ul class="pro__list">
+            <li>Pieza de arte funcional hecha a mano (base de la fogata)</li>
+            <li>Piritas decorativas ✨</li>
+            <li>Todo lo necesario para armarla fácilmente</li>
+            <li>Galletas, chocolate y marshmallows para s’mores 🍫🔥</li>
+            <li>Un dibujo pintado a mano 🎨</li>
+            <li>Certificado de autenticidad único 📜</li>
+            <li>QR con acceso a la historia de tu pieza</li>
+            <li>Tarjetita de agradecimiento 💌</li>
+          </ul>
+        </div>
+
+        <div class="pro__cta">
+          <a class="btn btn--ghost" href="https://caveny18.github.io/pagina-de-arte/escultura-ceramica.html" target="_blank">Ver catálogo de diseños</a>
+          <a class="btn btn--primary" href="https://api.whatsapp.com/message/4VXZPW2XW7JHJ1?autoload=1&app_absent=0" target="_blank">Comprar por WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- Columna imágenes -->
+      <aside class="pro__media">
+        <figure class="pro__img">
+          <img src="/recursos/10p.jpg" alt="Fogata diseño clásico">
+          <figcaption>Diseño clásico</figcaption>
+        </figure>
+        <figure class="pro__img">
+          <img src="/recursos/14p.jpg" alt="Fogata diseño diagonal">
+          <figcaption>Diseño diagonal</figcaption>
+        </figure>
+      </aside>
+    </div>
+  </div>
+</section>
 
   <!-- Cuatro columnas -->
   <section class="sections">
@@ -311,5 +452,40 @@
   <script>
     document.querySelectorAll("#year").forEach(n=>n.textContent=new Date().getFullYear());
   </script>
+    <script>
+  (function () {
+    const btn = document.querySelector('.nav__toggle');
+    const nav = document.querySelector('.nav');
+    if (!btn || !nav) return;
+
+    function toggleNav() {
+      const open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      document.body.classList.toggle('no-scroll', open);
+    }
+
+    btn.addEventListener('click', toggleNav);
+
+    // Cierra al tocar un link del menú
+    nav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        nav.classList.remove('open');
+        document.body.classList.remove('no-scroll');
+        btn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Cierra al tocar fuera del menú
+    document.addEventListener('click', (e) => {
+      if (!nav.classList.contains('open')) return;
+      if (!nav.contains(e.target) && e.target !== btn) {
+        nav.classList.remove('open');
+        document.body.classList.remove('no-scroll');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
+</script>
+
 </body>
 </html>
