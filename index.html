@@ -1,323 +1,456 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Juntos — Momentos que se sienten</title>
-  <meta name="description" content="Juntos: experiencias y piezas únicas hechas a mano. Fogatas en casa, arte y momentos para compartir.">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juntos - Tu Agente Personal de Regalos</title>
+    <meta name="description" content="Juntos es tu agente personal de regalos: te recordamos fechas importantes por WhatsApp y te ayudamos a elegir el detalle perfecto.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <style>
+        :root {
+            --blanco: #ffffff;
+            --negro: #1a1a1a;
+            --gris-claro: #f7f7f7;
+            --gris-medio: #e0e0e0;
+            --gris-oscuro: #555;
+            --verde-whatsapp: #25D366;
+            --rosa-principal: #FF4F70;
+            --instagram: #E4405F;
+            --facebook: #1877F2;
+            --tiktok: #000000;
+            --font-body: 'Inter', sans-serif;
+            --font-heading: 'Playfair Display', serif;
+            --container-width: 1100px;
+            --header-height: 80px;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-body); color: var(--negro); background-color: var(--blanco); line-height: 1.7; font-size: 16px; }
+        .container { max-width: var(--container-width); margin: 0 auto; padding: 0 20px; }
+        section { padding: 80px 0; }
+        h1, h2, h3 { font-family: var(--font-heading); font-weight: 700; line-height: 1.2; }
+        h1 { font-size: 3.5rem; }
+        h2 { font-size: 2.5rem; text-align: center; margin-bottom: 50px; }
+        h3 { font-size: 1.5rem; }
+        p { margin-bottom: 1rem; }
+        a { text-decoration: none; color: var(--negro); transition: color 0.3s ease; }
+        img { max-width: 100%; height: auto; display: block; }
+        .btn { display: inline-block; padding: 12px 28px; border-radius: 50px; font-weight: 500; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; border: 2px solid transparent; font-size: 1rem; }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .btn-primary { background-color: var(--rosa-principal); color: var(--blanco); }
+        .btn-secondary { background-color: var(--verde-whatsapp); color: var(--blanco); }
+        .btn-ghost { background-color: transparent; border: 2px solid var(--gris-medio); color: var(--negro); }
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .fade-in.is-visible { opacity: 1; transform: translateY(0); }
+        .header { position: fixed; top: 0; left: 0; width: 100%; background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); z-index: 1000; height: var(--header-height); border-bottom: 1px solid var(--gris-medio); }
+        .nav { height: 100%; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; font-family: var(--font-body); font-size: 1.5rem; font-weight: 700; }
+        .logo img { height: 30px; margin-right: 10px; }
+        .nav-menu { display: none; list-style: none; gap: 30px; }
+        .nav-link { font-weight: 500; position: relative; }
+        .nav-link::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background-color: var(--rosa-principal); transition: width 0.3s ease; }
+        .nav-link:hover::after { width: 100%; }
+        .header .btn { display: none; }
+        .hero { padding-top: calc(var(--header-height) + 80px); min-height: 90vh; display: flex; align-items: center; }
+        .hero-content { display: grid; grid-template-columns: 1fr; align-items: center; gap: 60px; }
+        .hero-text { text-align: center; }
+        .hero-text h1 { margin-bottom: 20px; }
+        .hero-text .subtitle { font-size: 1.25rem; color: var(--gris-oscuro); max-width: 600px; margin: 0 auto 40px; }
+        .hero-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+        .hero-media img { border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); max-height: 450px; object-fit: cover; width: 100%; }
+        .how-it-works { background-color: var(--gris-claro); }
+        .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; text-align: center; }
+        .step { padding: 20px; }
+        .step-icon { font-size: 3.5rem; color: var(--rosa-principal); margin-bottom: 20px; }
+        .step h3 { margin-bottom: 10px; }
+        .social-icons { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
+        .social-icon { font-size: 2.5rem; transition: transform 0.3s ease; }
+        .social-icon:hover { transform: scale(1.1); }
+        .social-icon.whatsapp { color: var(--verde-whatsapp); }
+        .social-icon.instagram { color: var(--instagram); }
+        .social-icon.facebook { color: var(--facebook); }
+        .social-icon.tiktok { color: var(--tiktok); }
+        .products-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
+        .product-card { border: 1px solid var(--gris-medio); border-radius: 15px; overflow: hidden; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .product-card:hover { transform: translateY(-8px); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
+        .product-card img { width: 100%; height: 300px; object-fit: cover; }
+        .product-card-content { padding: 25px; }
+        .product-card-content h3 { margin-bottom: 10px; }
+        .product-price { font-size: 1.2rem; font-weight: bold; color: var(--rosa-principal); margin-bottom: 20px; }
+        .product-buttons { display: flex; flex-direction: column; gap: 10px; }
+
+        /* Estilos para la nueva sección de Regalos Corporativos */
+        .corporate-gifts { background-color: var(--blanco); text-align: center; padding: 100px 0; }
+        .corporate-content { max-width: 800px; margin: 0 auto; }
+        .corporate-content p { font-size: 1.15rem; color: var(--gris-oscuro); margin-bottom: 40px; }
+        .corporate-features { display: grid; grid-template-columns: 1fr; gap: 30px; margin-top: 50px; text-align: left; }
+        .feature-item { display: flex; align-items: center; gap: 15px; background-color: var(--gris-claro); padding: 20px; border-radius: 10px; }
+        .feature-icon { font-size: 2rem; color: var(--rosa-principal); }
+        .feature-item h4 { font-size: 1.1rem; margin-bottom: 5px; }
+
+
+        .about-us-content { display: grid; grid-template-columns: 1fr; gap: 50px; align-items: center; text-align: center; }
+        .about-us-image img { border-radius: 50%; width: 300px; height: 300px; object-fit: cover; margin: 0 auto; box-shadow: 0 0 0 10px var(--blanco), 0 0 0 12px var(--gris-medio); }
+        .about-us-text h2 { text-align: center; margin-bottom: 20px; }
+        .about-us-text p { font-size: 1.15rem; color: var(--gris-oscuro); max-width: 600px; margin: 0 auto 30px; }
+        .testimonials { background-color: var(--gris-claro); }
+        .testimonials-grid { display: grid; gap: 30px; grid-template-columns: 1fr; }
+        .testimonial-card { background-color: var(--blanco); padding: 30px; border-radius: 15px; border: 1px solid var(--gris-medio); }
+        .testimonial-card p { font-style: italic; margin-bottom: 15px; color: var(--gris-oscuro); }
+        .testimonial-author { font-weight: bold; }
+        .faq-item { border-bottom: 1px solid var(--gris-medio); padding: 20px 0; }
+        .faq-question { display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-size: 1.2rem; font-weight: 500; }
+        .faq-question i { font-size: 1.5rem; transition: transform 0.3s ease; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+        .faq-answer p { padding-top: 15px; color: var(--gris-oscuro); }
+        .faq-item.active .faq-question i { transform: rotate(45deg); }
+        .cta-special { text-align: center; }
+        .cta-special h2 { margin-bottom: 30px; }
+        .cta-special .btn { font-size: 1.2rem; padding: 15px 40px; }
+        .footer { background-color: var(--gris-claro); padding: 60px 0; text-align: center; }
+        .footer .logo { justify-content: center; margin-bottom: 30px; }
+        .footer-links { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin-bottom: 30px; }
+        .footer .copyright { color: var(--gris-oscuro); font-size: 0.9rem; margin-top: 30px; }
+        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; background-color: var(--verde-whatsapp); color: var(--blanco); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 2.5rem; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); z-index: 999; transition: transform 0.3s ease; }
+        .whatsapp-float:hover { transform: scale(1.1); }
+        .modal { display: none; position: fixed; z-index: 1001; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.6); align-items: center; justify-content: center; }
+        .modal.active { display: flex; }
+        .modal-content { background-color: var(--blanco); margin: auto; padding: 30px; border-radius: 15px; max-width: 600px; width: 90%; position: relative; animation: slide-down 0.4s ease-out; }
+        .modal-close { position: absolute; top: 15px; right: 15px; font-size: 2rem; color: var(--gris-oscuro); cursor: pointer; }
+        .modal-body img { width: 100%; height: 250px; object-fit: cover; border-radius: 10px; margin-bottom: 20px; }
+        .modal-body .product-price { font-size: 1.5rem; }
+        .modal-body h4 { font-family: var(--font-heading); margin-top: 20px; margin-bottom: 10px; font-size: 1.2rem; }
+        .modal-body ul { list-style-position: inside; padding-left: 10px; }
+        .modal-body li { margin-bottom: 5px; }
+        @keyframes slide-down { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        @media (min-width: 768px) {
+            h1 { font-size: 4.5rem; }
+            h2 { font-size: 3rem; }
+            .nav-menu { display: flex; }
+            .header .btn { display: inline-block; }
+            .hero-content { grid-template-columns: 1.2fr 1fr; text-align: left; }
+            .hero-text { text-align: left; }
+            .hero-text .subtitle { margin: 0 0 40px; }
+            .hero-buttons { justify-content: flex-start; }
+            .products-grid { grid-template-columns: repeat(2, 1fr); }
+            .product-buttons { flex-direction: row; justify-content: center; }
+            .corporate-features { grid-template-columns: repeat(2, 1fr); }
+            .about-us-content { grid-template-columns: 1fr 1.5fr; text-align: left; }
+            .about-us-image img { margin: 0; }
+            .about-us-text h2 { text-align: left; }
+            .about-us-text p { margin: 0 0 30px; }
+            .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (min-width: 1024px) {
+            .products-grid { grid-template-columns: repeat(4, 1fr); }
+            .testimonials-grid { grid-template-columns: repeat(3, 1fr); }
+            .corporate-features { grid-template-columns: repeat(3, 1fr); }
+        }
+    </style>
 </head>
 <body>
-  <!-- Fondo (puedes dejarlo así o luego animarlo con JS) -->
-  <canvas id="bg" class="bg" aria-hidden="true"></canvas>
 
-  <!-- Header -->
-  <header class="site-header">
-    <a class="brand" href="#productos" aria-label="Inicio Juntos">
-      <span class="brand__logo" aria-hidden="true">❤</span>
-      <span class="brand__text">Juntos</span>
-    </a>
-    <nav class="nav">
-      <a href="#productos">Productos</a>
-      <a href="#about">Quiénes somos</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
-    <button class="nav__toggle" aria-label="Abrir menú">☰</button>
-  </header>
-  <!-- =======================
-       3) HERO (debajo)
-       ======================= -->
-  <section id="hero" class="hero reveal">
-    <div class="hero__content">
-      <h2>Regala <span class="highlight">arte</span> y <span class="highlight">momentos</span></h2>
-      <p class="lead">Experiencias hechas a mano para compartir en casa, en la playa o donde quieran. Todo listo para encender recuerdos.</p>
-      <div class="hero__cta">
-        <a class="btn btn--primary" href="#productos">Ver productos</a>
-        <a class="btn btn--ghost" href="#about">Conócenos</a>
-               <a class="btn btn--whatsapp"
-          href="https://wa.me/51913870416?text=Hola!%20Quiero%20más%20información%20sobre%20Juntos"
-          target="_blank" rel="noopener">
-         Contáctanos por WhatsApp
-       </a>
-      </div>
-    </div>
-    <div class="hero__media">
-  <video autoplay muted loop playsinline controls>
-    <source src="recursos/copy_0655E4F4-E5FD-44EE-80B9-31838F805301.mov" type="video/mp4">
-    Tu navegador no soporta video HTML5.
-  </video>
-</div>
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#" class="logo">
+                <img src="recursos/logo.png" alt="Logo Juntos">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#productos" class="nav-link">Productos</a></li>
+                <li><a href="#corporativos" class="nav-link">Regalos Corporativos</a></li> <li><a href="#quienes-somos" class="nav-link">Quiénes somos</a></li>
+                <li><a href="#faq" class="nav-link">FAQ</a></li>
+                <li><a href="#contacto" class="nav-link">Contacto</a></li>
+            </ul>
+            <a href="https://wa.me/51913870416?text=Hola!%20Quiero%20más%20información%20sobre%20Juntos" target="_blank" class="btn btn-secondary">
+                Contáctanos por WhatsApp
+            </a>
+        </nav>
+    </header>
 
-  </section>
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-content container">
+                <div class="hero-text fade-in">
+                    <h1>Nunca olvides un regalo importante</h1>
+                    <p class="subtitle">Juntos es tu agente personal de regalos: te recordamos fechas y te ayudamos a elegir el detalle perfecto.</p>
+                    <div class="hero-buttons">
+                        <a href="#productos" class="btn btn-primary">Ver productos</a>
+                        <a href="#quienes-somos" class="btn btn-ghost">Quiénes somos</a>
+                        <a href="https://wa.me/51913870416?text=Hola!%20Quiero%20registrar%20una%20fecha%20con%20Juntos" target="_blank" class="btn btn-secondary">Contactar por WhatsApp</a>
+                    </div>
+                </div>
+                <div class="hero-media fade-in">
+                    <img src="recursos/1ra.jpeg" alt="Persona feliz recibiendo un regalo">
+                </div>
+            </div>
+        </section>
 
-<main>
-  <!-- =======================
-       1) PRODUCTOS (arriba)
-       ======================= -->
-  <section id="productos" class="productos container reveal">
-    <div class="section-head">
-      <h1 class="productos__title">Productos</h1>
-      <p>Empieza por nuestras fogatas para casa. Más experiencias llegan pronto. ⚡️</p>
-    </div>
+        <section class="how-it-works" id="proceso">
+            <div class="container">
+                <h2 class="fade-in">¿Cómo funciona? Es muy fácil</h2>
+                <div class="process-steps">
+                    <div class="step fade-in">
+                        <div class="step-icon"><i class='bx bx-calendar-heart'></i></div>
+                        <h3>1. Envíanos tus fechas</h3>
+                        <p>Cuéntanos esas fechas especiales que no quieres olvidar. Puedes hacerlo por cualquiera de nuestras redes:</p>
+                        <div class="social-icons">
+                            <a href="https://wa.me/51913870416?text=Hola!%20Quiero%20registrar%20una%20fecha%20con%20Juntos" target="_blank" class="social-icon whatsapp"><i class='bx bxl-whatsapp'></i></a>
+                            <a href="https://www.instagram.com/junto_speru" target="_blank" class="social-icon instagram"><i class='bx bxl-instagram'></i></a>
+                            <a href="https://www.facebook.com/share/1BVUjjsPYq/" target="_blank" class="social-icon facebook"><i class='bx bxl-facebook'></i></a>
+                            <a href="https://www.tiktok.com/@_.juntos._7" target="_blank" class="social-icon tiktok"><i class='bx bxl-tiktok'></i></a>
+                        </div>
+                    </div>
+                    <div class="step fade-in" style="transition-delay: 0.2s;">
+                        <div class="step-icon"><i class='bx bx-bell'></i></div>
+                        <h3>2. Recibe un recordatorio</h3>
+                        <p>Nos encargamos del resto. Días antes, te escribiremos por WhatsApp. Si lo deseas, nos convertimos en tu **AGENTE DE REGALOS**, consiguiendo el detalle perfecto sin mínimos ni máximos de precio.</p>
+                    </div>
+                    <div class="step fade-in" style="transition-delay: 0.4s;">
+                        <div class="step-icon"><i class='bx bxs-gift'></i></div>
+                        <h3>3. Regala y sorprende</h3>
+                        <p>Elige si prefieres recibir el regalo tú o que lo enviemos directamente a esa persona especial. Lo coordinamos todo por chat. ¡Menos estrés, más momentos felices!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="productos" id="productos">
+            <div class="container">
+                <h2 class="fade-in">Nuestros regalos favoritos</h2>
+                <div class="products-grid">
+                    <div class="product-card fade-in">
+                        <img src="recursos/fogatayahecha.jpg" alt="Kit Fogata">
+                        <div class="product-card-content">
+                            <h3>Kit de Fogata en casa</h3>
+                            <p class="product-price">S/ 127.00</p>
+                            <div class="product-buttons">
+                                <a href="https://wa.me/51913870416?text=Hola,%20quiero%20comprar%20el%20Kit%20de%20Fogata." target="_blank" class="btn btn-secondary">Comprar</a>
+                                <button class="btn btn-ghost open-modal" data-modal-id="modal-fogata">Ver más</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card fade-in" style="transition-delay: 0.2s;">
+                        <img src="recursos/yeso-1.png" alt="Producto Manos eternas">
+                        <div class="product-card-content">
+                            <h3>Manos Eternas en Yeso</h3>
+                            <p class="product-price">S/ 70.00</p>
+                            <div class="product-buttons">
+                                <a href="https://wa.me/51913870416?text=Hola,%20quiero%20comprar%20el%20kit%20de%20Manos%20Eternas." target="_blank" class="btn btn-secondary">Comprar</a>
+                                <button class="btn btn-ghost open-modal" data-modal-id="modal-yeso">Ver más</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card fade-in" style="transition-delay: 0.4s;">
+                        <img src="recursos/desayuno.jpeg" alt="Desayuno Juntos">
+                        <div class="product-card-content">
+                            <h3>Desayuno Juntos</h3>
+                            <p class="product-price">Desde S/ 25.00</p>
+                            <div class="product-buttons">
+                                <a href="https://wa.me/51913870416?text=Hola,%20me%20interesa%20un%20Desayuno%20Juntos." target="_blank" class="btn btn-secondary">Cotizar</a>
+                                <button class="btn btn-ghost open-modal" data-modal-id="modal-desayuno">Ver más</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card fade-in" style="transition-delay: 0.6s;">
+                        <img src="recursos/collage.jpeg" alt="Regalos juntos">
+                        <div class="product-card-content">
+                            <h3>Regalos Personalizados</h3>
+                            <p class="product-price">Desde S/ 25.00</p>
+                            <div class="product-buttons">
+                                <a href="https://wa.me/51913870416?text=Hola,%20quiero%20un%20regalo%20personalizado." target="_blank" class="btn btn-secondary">Cotizar</a>
+                                <button class="btn btn-ghost open-modal" data-modal-id="modal-personalizado">Ver más</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="corporate-gifts" id="corporativos">
+            <div class="container">
+                <h2 class="fade-in">Regalos Corporativos y Empresariales 🎁</h2>
+                <div class="corporate-content fade-in">
+                    <p>Dale un giro a la cultura de tu empresa con detalles que realmente conectan. En Juntos, diseñamos experiencias de regalo personalizadas para empleados, clientes y eventos especiales.</p>
 
-    <div class="grid">
-      <!-- Card: Fogata en casa -->
-     <article class="card product">
-       <a class="card__media" href="https://caveny18.github.io/pagina-de-arte/escultura-ceramica.html" target="_blank" rel="noopener">
-         <img loading="lazy" src="recursos/fogatayahecha.jpg" alt="Fogata artesanal para casa con kit completo" />
-         <span class="pill">Nuevo</span>
-       </a>
-       <div class="card__body">
-         <h3>Fogata en casa</h3>
-         <p class="price">S/ <strong>127</strong></p>
-        <p class="desc">Pieza de arte funcional + kit para encender y compartir s’mores o momentos de conversación. Reutilizable y segura.</p>
-       </div>
-       <div class="card__actions">
-         <a class="btn btn--ghost" href="https://caveny18.github.io/pagina-de-arte/escultura-ceramica.html" target="_blank" rel="noopener">Catálogo</a>
-         <a class="btn btn--ghost" href="https://caveny18.github.io/juntos/dinamica" target="_blank" rel="noopener">info. del kit</a>
-         <a class="btn btn--primary" href="https://api.whatsapp.com/message/4VXZPW2XW7JHJ1?autoload=1&app_absent=0" target="_blank" rel="noopener">Comprar</a>
-       </div>
-     </article>
+                    <div class="corporate-features">
+                        <div class="feature-item fade-in" style="transition-delay: 0.2s;">
+                            <div class="feature-icon"><i class='bx bx-bulb'></i></div>
+                            <div>
+                                <h4>Ideas Innovadoras</h4>
+                                <p>Salimos del típico merchandising para ofrecer regalos creativos y de alto impacto.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item fade-in" style="transition-delay: 0.4s;">
+                            <div class="feature-icon"><i class='bx bx-badge-check'></i></div>
+                            <div>
+                                <h4>Gestión Integral</h4>
+                                <p>Nos encargamos de la selección, personalización, empaque y logística de entrega.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item fade-in" style="transition-delay: 0.6s;">
+                            <div class="feature-icon"><i class='bx bx-objects-horizontal-left'></i></div>
+                            <div>
+                                <h4>Totalmente Personalizado</h4>
+                                <p>Adaptamos el regalo a la marca, el evento y el presupuesto de tu empresa.</p>
+                            </div>
+                        </div>
+                    </div>
 
+                    <a href="https://wa.me/51913870416?text=Hola,%20quisiera%20cotizar%20regalos%20corporativos%20para%20mi%20empresa." target="_blank" class="btn btn-primary" style="margin-top: 50px;">
+                        Cotizar para mi Empresa
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section class="about-us" id="quienes-somos"> <div class="container"> <div class="about-us-content"> <div class="about-us-image fade-in"> <img src="recursos/juntos.png" alt="Ynes y Carlos, fundadores de Juntos"> </div><div class="about-us-text fade-in"> <h2>Somos Juntos</h2> <p>Somos tu agente personal de regalos. Nos cuentas tus fechas importantes y nosotros te recordamos, proponemos ideas y te ayudamos a comprar y enviar detalles que importan. Menos estrés, más momentos.</p><a href="https://wa.me/51913870416?text=Hola,%20quiero%20registrar%20una%20fecha%20con%20Juntos." target="_blank" class="btn btn-primary">Guardar una fecha por WhatsApp</a> </div></div></div></section>
+        <section class="testimonials" id="testimonios"> <div class="container"> <h2 class="fade-in">Lo que dicen nuestros clientes</h2> <div class="testimonials-grid"> <div class="testimonial-card fade-in"><p>"¡Juntos salvó el aniversario de mis padres! Me recordaron con tiempo y me dieron una idea genial. Súper recomendado."</p><span class="testimonial-author">- Sofía L.</span></div><div class="testimonial-card fade-in" style="transition-delay: 0.2s;"><p>"El servicio es increíblemente fácil. Les pasé las fechas de cumpleaños de mis amigos y ya no me preocupo por nada."</p><span class="testimonial-author">- Marco V.</span></div><div class="testimonial-card fade-in" style="transition-delay: 0.4s;"><p>"Me encanta la atención personalizada. Se siente como hablar con un amigo que te ayuda a encontrar el regalo perfecto."</p><span class="testimonial-author">- Ana G.</span></div></div></div></section>
+        <section class="faq" id="faq"> <div class="container"> <h2 class="fade-in">Preguntas Frecuentes</h2> <div class="faq-container fade-in"> <div class="faq-item"><div class="faq-question"><span>¿Cómo funcionan los recordatorios?</span><i class='bx bx-plus'></i></div><div class="faq-answer"><p>Nos das tus fechas importantes por WhatsApp o la red social que prefieras. Una o dos semanas antes, te contactaremos con un recordatorio y sugerencias de regalos.</p></div></div><div class="faq-item"><div class="faq-question"><span>¿Cómo compro un regalo por WhatsApp?</span><i class='bx bx-plus'></i></div><div class="faq-answer"><p>¡Es muy fácil! Eliges el producto que te gusta, confirmas tu pedido y coordinamos el pago y el envío, todo dentro del mismo chat de WhatsApp.</p></div></div><div class="faq-item"><div class="faq-question"><span>¿Puedo programar fechas anuales?</span><i class='bx bx-plus'></i></div><div class="faq-answer"><p>¡Claro que sí! La mayoría de nuestros clientes nos dan sus fechas una sola vez y nosotros nos encargamos de recordárselas cada año. Puedes actualizar tu lista cuando quieras.</p></div></div></div></div></section>
+        <section class="cta-special" id="contacto"> <div class="container fade-in"> <h2>Nunca olvides una fecha importante. <br>Déjalo en nuestras manos.</h2> <a href="https://wa.me/51913870416?text=Hola,%20quiero%20comenzar%20ahora%20con%20Juntos." target="_blank" class="btn btn-secondary">Comenzar ahora por WhatsApp</a> </div></section>
+    </main>
+    
+    <footer class="footer"> <div class="container"> <a href="#" class="logo"> <img src="recursos/logo.png" alt="Logo Juntos"> </a> <ul class="footer-links"> <li><a href="#proceso">Cómo Funciona</a></li><li><a href="#productos">Productos</a></li><li><a href="#corporativos">Regalos Corporativos</a></li> <li><a href="#quienes-somos">Quiénes somos</a></li><li><a href="#faq">FAQ</a></li></ul> <div class="social-icons"> <a href="https://wa.me/51913870416?text=Hola!%20Quiero%20más%20información%20sobre%20Juntos" target="_blank" class="social-icon whatsapp"><i class='bx bxl-whatsapp'></i></a> <a href="https://www.instagram.com/junto_speru" target="_blank" class="social-icon instagram"><i class='bx bxl-instagram'></i></a> <a href="https://www.facebook.com/share/1BVUjjsPYq/" target="_blank" class="social-icon facebook"><i class='bx bxl-facebook'></i></a> <a href="https://www.tiktok.com/@_.juntos._7" target="_blank" class="social-icon tiktok"><i class='bx bxl-tiktok'></i></a> </div><p class="copyright">&copy; 2025 Juntos. Todos los derechos reservados.</p></div></footer>
 
-      <!-- Placeholders -->
-      <article class="card product">
-        <div class="card__media">
-          <img loading="lazy" src="recursos//yeso.webp" alt="Tarjeta de experiencia próximamente" />
+    <a href="https://wa.me/51913870416?text=Hola,%20quiero%20registrar%20una%20fecha%20con%20Juntos." target="_blank" class="whatsapp-float"><i class='bx bxl-whatsapp'></i></a>
 
+    <div class="modal" id="modal-fogata">
+        <div class="modal-content">
+            <i class='bx bx-x modal-close'></i>
+            <div class="modal-body">
+                <img src="recursos/fogatayahecha.jpg" alt="Kit de Fogata en casa">
+                <h3>Kit de Fogata en casa</h3>
+                <p class="product-price">S/ 127.00</p>
+                <p>Crea un momento mágico y acogedor sin salir de casa. Ideal para una noche especial, una charla profunda o simplemente para disfrutar de unos deliciosos s'mores.</p>
+                
+                <h4>Ficha Técnica</h4>
+                <ul>
+                    <li><b>Medidas:</b> Diseño clásico (18x8.5 cm) o diagonal (17x18 cm). Al ser hechas a mano, las medidas pueden variar ligeramente.</li>
+                    <li><b>Base de la fogata:</b> Una pieza de arte funcional hecha a mano.</li>
+                    <li><b>Decoración:</b> Incluye piritas decorativas para un toque brillante ✨.</li>
+                    <li><b>Kit para S'mores:</b> Galletas, chocolate y marshmallows 🍫🔥.</li>
+                    <li><b>Extras:</b> Un dibujo pintado a mano, certificado de autenticidad único, QR con la historia de tu pieza y una tarjeta de agradecimiento 💌.</li>
+                </ul>
+                <a href="https://wa.me/51913870416?text=Hola,%20quiero%20comprar%20el%20Kit%20de%20Fogata." target="_blank" class="btn btn-secondary" style="width: 100%; margin-top: 20px;">Comprar por WhatsApp</a>
+            </div>
         </div>
-        <div class="card__body">
-          <h3>Manos por la eternidad</h3>
-          <p class="price">S/ <strong>70</strong></p>
-          <p class="desc">Las manos por la eternidad es una experiencia única para inmortalizar lo que más importa: la unión. Con este kit de yeso podrás crear, junto a tu pareja o seres queridos, una escultura realista de sus manos entrelazadas o como desees. Una pieza artesanal hecha por ustedes mismos, símbolo tangible de amor, amistad y complicidad que quedará para siempre.</p>
-       <div class="card__actions">
-         <a class="btn btn--ghost" href="https://caveny18.github.io/juntos/dinamicaarcilla" target="_blank" rel="noopener">info. del kit</a>
-         <a class="btn btn--primary" href="https://api.whatsapp.com/message/4VXZPW2XW7JHJ1?autoload=1&app_absent=0" target="_blank" rel="noopener">Comprar</a>
-       </div>
-      </article>
+    </div>
 
-      <article class="card product product--disabled" aria-disabled="true">
-        <div class="card__media">
-          <img loading="lazy" src="recursos/logo.png" alt="Tarjeta de experiencia próximamente" />
-          <span class="pill pill--ghost">Próximamente</span>
+    <div class="modal" id="modal-yeso">
+        <div class="modal-content">
+            <i class='bx bx-x modal-close'></i>
+            <div class="modal-body">
+                <img src="recursos/yeso-1.png" alt="Kit Manos Eternas en Yeso">
+                <h3>Manos Eternas en Yeso</h3>
+                <p class="product-price">S/ 70.00</p>
+                <p>Captura un instante para siempre. Este kit te permite crear una escultura de yeso detallada de tus manos entrelazadas con las de un ser querido. Una experiencia única y un recuerdo que perdurará toda la vida.</p>
+                <p>Perfecto para parejas, padres e hijos, o mejores amigos. Incluye todos los materiales necesarios e instrucciones fáciles de seguir.</p>
+                <a href="https://wa.me/51913870416?text=Hola,%20quiero%20comprar%20el%20kit%20de%20Manos%20Eternas." target="_blank" class="btn btn-secondary" style="width: 100%; margin-top: 20px;">Comprar por WhatsApp</a>
+            </div>
         </div>
-        <div class="card__body">
-          <h3>Experiencia #3</h3>
-          <p class="desc">Otra caja para atesorar momentos.</p>
+    </div>
+
+    <div class="modal" id="modal-desayuno">
+        <div class="modal-content">
+            <i class='bx bx-x modal-close'></i>
+            <div class="modal-body">
+                <img src="recursos/desayuno.jpeg" alt="Desayuno personalizado Juntos">
+                <h3>Desayuno Juntos</h3>
+                <p class="product-price">Desde S/ 25.00</p>
+                <p>Convertimos algo cotidiano en un momento inolvidable. Cuéntanos qué le gusta a esa persona especial y nosotros armamos un desayuno a su medida, lleno de detalles únicos y deliciosos.</p>
+                <p>Nos encargamos de todo y lo entregamos desde muy temprano para que el día comience con la mejor sorpresa. El precio se ajusta a tu presupuesto y a lo que desees incluir. ¡Las posibilidades son infinitas!</p>
+                <a href="https://wa.me/51913870416?text=Hola,%20me%20interesa%20un%20Desayuno%20Juntos." target="_blank" class="btn btn-secondary" style="width: 100%; margin-top: 20px;">Cotizar mi desayuno</a>
+            </div>
         </div>
-        <div class="card__actions">
-          <button class="btn btn--ghost" disabled>Disponible más adelante</button>
+    </div>
+
+    <div class="modal" id="modal-personalizado">
+        <div class="modal-content">
+            <i class='bx bx-x modal-close'></i>
+            <div class="modal-body">
+                <img src="recursos/collage.jpeg" alt="Ejemplos de regalos personalizados">
+                <h3>Regalos Personalizados</h3>
+                <p class="product-price">Desde S/ 25.00</p>
+                <p>Este es nuestro servicio estrella como tus **agentes personales de regalos**. ¿Tienes una idea pero no sabes cómo ejecutarla? ¿O no tienes idea de qué regalar? ¡Déjalo en nuestras manos!</p>
+                <p>Buscamos, creamos y personalizamos el regalo perfecto según los gustos de la persona, la ocasión y tu presupuesto. Desde detalles pequeños hasta grandes sorpresas, nos aseguramos de que cada regalo cuente una historia.</p>
+                <a href="https://wa.me/51913870416?text=Hola,%20quiero%20un%20regalo%20personalizado." target="_blank" class="btn btn-secondary" style="width: 100%; margin-top: 20px;">Hablar con mi agente</a>
+            </div>
         </div>
-      </article>
     </div>
-  </section>
-
-  <!-- =======================
-       2) QUIÉNES SOMOS (abajo de productos)
-       ======================= -->
-  <section id="about" class="about-mw section reveal">
-    <div class="mw-row">
-      <figure class="mw-media slider mw-fade">
-        <div class="mw-slides">
-          <img src="recursos/happi1.jpg" alt="Ynes Cabrera en su taller">
-          <img src="recursos/juntos.png" alt="Ynes Cabrera pintando">
-          <img src="recursos/happi2.jpg" alt="Ynes Cabrera con una obra">
-        </div>
-        <a class="mw-ig" href="https://www.instagram.com/junto_speru?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener">
-          <span class="mw-ig__icon">📷</span> @Juntos.Perú
-        </a>
-      </figure>
-
-      <div class="mw-copy">
-<span class="mw-eyebrow">ACERCA DE NOSOTROS</span>}
-<h2>Juntos: experiencias que fortalecen</h2>
-<p>
-  Somos <strong>una empresa madre e hijo</strong> que transforma el arte en
-  <strong>cajas de experiencias</strong>. Cada pieza y cada dinámica nace para
-  crear momentos de unión en el hogar, ya sea entre parejas, amigos o familia.
-</p>
-<p>
-  En <strong>Juntos</strong> creemos que no hay nada igual: mientras otros
-  productos son regalos unilaterales, nuestras experiencias son <em>bilaterales</em>,
-  porque se viven de a dos y generan cercanía real.
-</p>
-<p>
-  Nuestro sueño es <strong>fortalecer las relaciones de las personas</strong> con
-  detalles alcanzables en casa, para que se preparen hoy y sean más fuertes en
-  las tormentas de mañana.
-</p>
-
-        <a class="btn-solid" href="https://www.instagram.com/junto_speru?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener">Ver Instagram</a>
-      </div>
-    </div>
-  </section>
 
 
-  <!-- TESTIMONIOS -->
-  <section class="testimonios reveal">
-    <div class="container">
-      <h2>Lo que dicen de Juntos</h2>
-      <div class="quotes">
-        <figure class="quote">
-          <blockquote>
-            “Encendimos la fogata en nuestra sala y terminamos conversando por horas.
-            Fue un momento único, sin pantallas, solo nosotros.”
-          </blockquote>
-          <figcaption>— Mariana y Diego</figcaption>
-        </figure>
-        <figure class="quote">
-          <blockquote>
-            “Se siente especial porque no es un regalo que se guarda en un cajón,
-            sino una experiencia que compartes y recuerdas.”
-          </blockquote>
-          <figcaption>— Valeria</figcaption>
-        </figure>
-        <figure class="quote">
-          <blockquote>
-            “Me encantó porque además de bonita como pieza decorativa,
-            nos dio una excusa para reunir a mis amigos un viernes en casa.”
-          </blockquote>
-          <figcaption>— Jimena</figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Lógica del Acordeón para FAQ ---
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    faqItems.forEach(i => {
+                        i.classList.remove('active');
+                        i.querySelector('.faq-answer').style.maxHeight = null;
+                    });
+                    if (!isActive) {
+                        item.classList.add('active');
+                        const answer = item.querySelector('.faq-answer');
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                    }
+                });
+            });
 
-  <!-- FAQ -->
-  <section id="faq" class="faq container reveal">
-    <h2>Preguntas frecuentes</h2>
-    <details>
-      <summary>¿La fogata es reutilizable?</summary>
-      <p>Sí. Está diseñada para encenderse en varias ocasiones siguiendo las instrucciones del kit.</p>
-    </details>
-    <details>
-      <summary>¿Es segura?</summary>
-      <p>
-        Sí. Incluimos una guía clara y materiales pensados para un uso doméstico responsable.
-        Siempre recomendamos encenderla en espacios ventilados.
-      </p>
-    </details>
-    <details>
-      <summary>¿Hacen envíos?</summary>
-      <p>
-        Sí, hacemos envíos en Lima y provincias. Escríbenos por WhatsApp y te confirmamos
-        cobertura y costos de envío.
-      </p>
-    </details>
-    <details>
-      <summary>¿Qué incluye la caja?</summary>
-      <p>
-        Cada caja incluye la pieza de arte (fogata), kit de encendido,Kit para hacer Smore's, certificado de autenticidad
-        y una dinámica para compartir en pareja o en familia.
-      </p>
-    </details>
-  </section>
+            // --- Lógica para Múltiples Modales ---
+            const openModalButtons = document.querySelectorAll('.open-modal');
+            const closeModalButtons = document.querySelectorAll('.modal-close');
 
-  <!-- CONTACTO -->
-  <section id="contacto" class="contacto reveal">
-    <div class="container contacto__box">
-      <h2>¿Listo para crear momentos?</h2>
-      <p>
-        Escríbenos por WhatsApp y te ayudamos a elegir o personalizar tu experiencia.
-      </p>
-      <a class="btn btn--primary"
-         href="https://api.whatsapp.com/message/4VXZPW2XW7JHJ1?autoload=1&app_absent=0"
-         target="_blank" rel="noopener">
-        Hablar por WhatsApp
-      </a>
-      <p style="margin-top:12px; font-size:14px; color:var(--muted);">
-        También puedes escribirnos a <a href="https://api.whatsapp.com/message/4VXZPW2XW7JHJ1?autoload=1&app_absent=0">hola@juntos.pe</a>
-      </p>
-    </div>
-  </section>
-</main>
+            openModalButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const modalId = button.dataset.modalId;
+                    const modal = document.getElementById(modalId);
+                    if (modal) {
+                        modal.classList.add('active');
+                    }
+                });
+            });
 
-  <!-- MODAL CSS-ONLY: Fogata -->
-  <div id="modal-fogata" class="modal">
-    <div class="modal__box" role="dialog" aria-modal="true" aria-labelledby="fogata-title">
-      <a class="modal__close" href="#" aria-label="Cerrar">×</a>
-      <div class="modal__grid">
-        <div class="modal__media">
-          <video controls autoplay muted loop playsinline class="modal__video">
-  <source src="recursos/copy_465718FD-0428-429F-A89E-52B852248E97.mov" type="video/mp4">
-  Tu navegador no soporta video HTML5.
-</video>
+            const closeModal = (modal) => {
+                if (modal) {
+                    modal.classList.remove('active');
+                }
+            }
 
-        </div>
-        <div class="modal__text">
-          <h3 id="fogata-title">Fogata en casa — <span>S/ 127</span></h3>
-          <ul class="bullets">
-           <li>Pieza de arte funcional hecha a mano</li>
-           <li>Kit para encendido + guía paso a paso</li>
-           <li>Kit para preparar tus primeros s’mores</li>
-          <li>Un dibujo de regalo del artista</li>
-          <li>Certificado de autenticidad</li>
-          <li>Ideal para s’mores, historias y música</li>
-         </ul>
-         <div class="product-sizes"></div>
-         <h4>📏 Medidas disponibles</h4>
-         <ul><li><strong>Modelo clásico:</strong> 18 cm diámetro × 8.5 cm alto</li>
-        <li><strong>Modelo corte diagonal:</strong> 17 cm diámetro × 18 cm alto</li>
-        </ul>
-      </div>
-    </div>
-          <div class="modal__actions">
-            <a class="btn btn--primary" href="https://api.whatsapp.com/message/4VXZPW2XW7JHJ1?autoload=1&app_absent=0" target="_blank" rel="noopener">Comprar por WhatsApp</a>
-            <a class="btn btn--ghost" href="dinamica.html">Ver dinámica</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+            closeModalButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const modal = button.closest('.modal');
+                    closeModal(modal);
+                });
+            });
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container footer__grid">
-      <p>© <span id="year"></span> Juntos — Hecho a mano en Perú</p>
-      <nav class="footer__nav">
-        <a href="#productos">Productos</a>
-        <a href="#about">Quiénes somos</a>
-        <a href="#faq">FAQ</a>
-      </nav>
-    </div>
-  </footer>
-  <script>
-  (function () {
-    const btn = document.querySelector('.nav__toggle');
-    const nav = document.querySelector('.nav');
-    if (!btn || !nav) return;
+            // Cerrar modal al hacer clic fuera del contenido
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.addEventListener('click', (event) => {
+                    if (event.target === modal) {
+                        closeModal(modal);
+                    }
+                });
+            });
 
-    function toggleNav() {
-      const open = nav.classList.toggle('open');
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      document.body.classList.toggle('no-scroll', open);
-    }
-
-    btn.addEventListener('click', toggleNav);
-
-    // Cierra al tocar un link del menú
-    nav.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        nav.classList.remove('open');
-        document.body.classList.remove('no-scroll');
-        btn.setAttribute('aria-expanded', 'false');
-      });
-    });
-
-    // Cierra al tocar fuera del menú
-    document.addEventListener('click', (e) => {
-      if (!nav.classList.contains('open')) return;
-      if (!nav.contains(e.target) && e.target !== btn) {
-        nav.classList.remove('open');
-        document.body.classList.remove('no-scroll');
-        btn.setAttribute('aria-expanded', 'false');
-      }
-    });
-  })();
-</script>
-
+            // --- Animación de Fade-in al hacer scroll ---
+            const faders = document.querySelectorAll('.fade-in');
+            const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+            const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                });
+            }, appearOptions);
+            faders.forEach(fader => appearOnScroll.observe(fader));
+        });
+    </script>
 </body>
 </html>
