@@ -316,7 +316,146 @@
                 </div>
             </div>
         </section>
-        
+        <!-- ====== Sección: Vasijas Juntos ====== -->
+<section class="vasijas-section" id="vasijas-juntos">
+  <div class="container">
+    <h2>Vasijas Juntos — Colección Elegante</h2>
+    <p class="vasijas-sub">Piezas únicas hechas con cariño. Elige tamaño y te llevamos la compra por WhatsApp.</p>
+
+    <div class="vasijas-grid">
+      <!-- Cilindro 12x13 -->
+      <article class="vasija-card">
+        <div class="vasija-thumb">
+          <img src="recursos/vasijacilindropequeño.jpeg" alt="Vasija Luna cilindro 12x13" loading="lazy">
+        </div>
+        <div class="vasija-meta">
+          <h3>Luna — Cilindro</h3>
+          <p class="vasija-dim">12 × 13 cm</p>
+          <button class="btn btn-secondary btn-whatsapp-vasija"
+                  data-name="Luna — Cilindro"
+                  data-size="12x13"
+                  aria-label="Comprar Luna cilindro 12 por WhatsApp">
+            Comprar por WhatsApp
+          </button>
+        </div>
+      </article>
+
+      <!-- Cilindro 18x19 -->
+      <article class="vasija-card">
+        <div class="vasija-thumb">
+          <img src="recursos/vasijacilindromediano.png" alt="Vasija elegante cilindro 18x19" loading="lazy">
+        </div>
+        <div class="vasija-meta">
+          <h3>Elegante — Cilindro mediano</h3>
+          <p class="vasija-dim">18 × 19 cm</p>
+          <button class="btn btn-secondary btn-whatsapp-vasija"
+                  data-name="Sol — Cilindro XL"
+                  data-size="18x19"
+                  aria-label="Comprar elegante cilindro 18 por WhatsApp">
+            Comprar por WhatsApp
+          </button>
+        </div>
+      </article>
+
+      <!-- Esférica 17x19 -->
+      <article class="vasija-card">
+        <div class="vasija-thumb">
+          <img src="recursos/vasija cilindrica.png" alt="Vasija esférica 17x19" loading="lazy">
+        </div>
+        <div class="vasija-meta">
+          <h3>Estrella — Esférica</h3>
+          <p class="vasija-dim">17 × 19 cm</p>
+          <button class="btn btn-secondary btn-whatsapp-vasija"
+                  data-name="Estrella — Esférica"
+                  data-size="17x19"
+                  aria-label="Comprar esférica 17 por WhatsApp">
+            Comprar por WhatsApp
+          </button>
+        </div>
+      </article>
+
+      <!-- Pato 14x28 -->
+      <article class="vasija-card">
+        <div class="vasija-thumb">
+          <img src="recursos/vasija de plato.png" alt="Vasija platico redondeada 14x28" loading="lazy">
+        </div>
+        <div class="vasija-meta">
+          <h3>Patico — Redondeada</h3>
+          <p class="vasija-dim">14 × 28 cm</p>
+          <button class="btn btn-secondary btn-whatsapp-vasija"
+                  data-name="Patico — Redondeada"
+                  data-size="14x28"
+                  aria-label="Comprar Platico redondeada 14 por WhatsApp">
+            Comprar por WhatsApp
+          </button>
+        </div>
+      </article>
+
+      <!-- Blonditas 17x22 -->
+      <article class="vasija-card">
+        <div class="vasija-thumb">
+          <img src="recursos/vasijafloreada.png" alt="Vasija con blonditas 17x22" loading="lazy">
+        </div>
+        <div class="vasija-meta">
+          <h3>Elegancia — Con Blonditas</h3>
+          <p class="vasija-dim">17 × 22 cm</p>
+          <button class="btn btn-secondary btn-whatsapp-vasija"
+                  data-name="Elegancia — Con Blonditas"
+                  data-size="17x22"
+                  aria-label="Comprar elegancia con blonditas 17 por WhatsApp">
+            Comprar por WhatsApp
+          </button>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ====== Estilos para Vasijas (añade al <style> o pegalos aquí) ====== -->
+<style>
+  /* Scoped styles para sección de vasijas */
+  .vasijas-section { padding: 70px 0; background: linear-gradient(180deg,#fff 0%, #fff7fb 100%); border-top: 1px solid var(--gris-medio); }
+  .vasijas-section h2 { text-align: center; margin-bottom: 6px; font-size: 2rem; color: var(--negro); }
+  .vasijas-sub { text-align: center; color: var(--gris-oscuro); margin-bottom: 28px; }
+  .vasijas-grid { display: grid; gap: 22px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); align-items: start; }
+  .vasija-card { background: var(--blanco); border: 1px solid var(--gris-medio); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: transform .22s ease, box-shadow .22s ease; }
+  .vasija-card:hover { transform: translateY(-6px); box-shadow: 0 14px 30px rgba(0,0,0,0.06); }
+  .vasija-thumb { width: 100%; aspect-ratio: 4/3; overflow: hidden; background: #fafafa; display: flex; align-items: center; justify-content: center; }
+  .vasija-thumb img { width: 100%; height: 100%; object-fit: cover; display:block; }
+  .vasija-meta { padding: 14px; text-align: center; display:flex; flex-direction:column; gap:10px; }
+  .vasija-meta h3 { margin: 0; font-size: 1.1rem; color: var(--rosa-principal); }
+  .vasija-dim { margin: 0; color: var(--gris-oscuro); font-size: 0.95rem; }
+  .vasija-meta .btn { width: 100%; border-radius: 10px; padding: 10px 12px; font-weight: 600; }
+  @media (min-width: 768px) {
+    .vasija-meta h3 { font-size: 1.15rem; }
+  }
+</style>
+
+<!-- ====== JS: abrir WhatsApp con mensaje prellenado ====== -->
+<script>
+  (function() {
+    // Número usado en la web (ya presente en tu plantilla)
+    const whatsappPhone = '+51913870416';
+
+    function urlEncode(str) {
+      return encodeURIComponent(str);
+    }
+
+    document.querySelectorAll('.btn-whatsapp-vasija').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const name = btn.dataset.name || 'Vasija Juntos';
+        const size = btn.dataset.size || '';
+        // Puedes cambiar qty a una selección si quieres luego
+        const qty = 1;
+        const msg = `Hola 👋 quiero comprar *${name}* (tamaño: ${size}) — cantidad: ${qty}. ¿Tienen stock y cuál es el costo final con envío?`;
+        const phone = whatsappPhone.replace(/\D/g,''); // solo dígitos
+        const url = `https://wa.me/${phone}?text=${urlEncode(msg)}`;
+        window.open(url, '_blank');
+      });
+    });
+  })();
+</script>
+
         <section class="corporate-gifts" id="corporativos">
             <div class="container">
                 <h2 class="fade-in">Regalos Corporativos y Empresariales 🎁</h2>
