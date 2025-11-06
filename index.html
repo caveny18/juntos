@@ -189,6 +189,67 @@
             .testimonials-grid { grid-template-columns: repeat(3, 1fr); }
             .corporate-features { grid-template-columns: repeat(3, 1fr); }
         }
+        /* 🔸 Fondo oscuro del modal */
+.modal-vasija {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+/* 🔸 Contenedor interno */
+.modal-content {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  max-width: 600px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  animation: fadeIn 0.3s ease;
+}
+
+/* 🔸 Imagen grande */
+.modal-content img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 0.8rem;
+}
+
+/* 🔸 Cerrar (X) */
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.8rem;
+  color: #333;
+  cursor: pointer;
+}
+
+/* 🔸 Texto */
+.modal-content h3 {
+  margin-top: 1rem;
+  font-size: 1.4rem;
+  color: #7a4a2a;
+}
+
+.modal-content p {
+  color: #4b3b2f;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: scale(0.95);}
+  to {opacity: 1; transform: scale(1);}
+}
+
     </style>
 </head>
 <body>
@@ -231,7 +292,7 @@
                     </div>
                 </div>
                 <div class="hero-media fade-in">
-                    <img src="recursos/1ra.jpeg" alt="Persona feliz recibiendo un regalo">
+                    <img src="recursos/1ra.png" alt="Persona feliz recibiendo un regalo">
                 </div>
             </div>
         </section>
@@ -320,13 +381,45 @@
 <section class="vasijas-section" id="vasijas-juntos">
   <div class="container">
     <h2>Vasijas Juntos — Colección Elegante</h2>
+    <section class="vasijas-descripcion">
+  <div class="container descripcion-grid">
+    <div class="descripcion-texto">
+      <h2 class="descripcion-titulo">Hechas con alma peruana</h2>
+      <p>
+        Cada vasija es una <strong>obra artesanal única</strong>, modelada y pintada a mano por talentosos artistas peruanos. 
+        Están elaboradas con <strong>arcilla natural</strong> de alta calidad, lo que les da una textura cálida y auténtica.
+      </p>
+      <p>
+        Por su naturaleza artesanal, <strong>no existen dos piezas iguales</strong>: cada detalle refleja la historia, la dedicación 
+        y el espíritu creativo de quien la hizo.
+      </p>
+      <p>
+        Para mantener su belleza, evita el uso de <strong>químicos o ácidos fuertes</strong> al limpiarlas. 
+        Nuestras vasijas son resistentes a <strong>altas temperaturas</strong>, ideales tanto para uso decorativo como funcional.
+      </p>
+    </div>
+
+    <div class="descripcion-imagenes">
+      <div class="img-wrapper">
+        <img src="recursos/modelado-mano.jpg" alt="Modelado a mano de vasijas de arcilla" loading="lazy">
+        <p class="img-caption">Modelado artesanal</p>
+      </div>
+      <div class="img-wrapper">
+        <img src="recursos/pintado-mano.jpg" alt="Pintado a mano de vasijas peruanas" loading="lazy">
+        <p class="img-caption">Pintado a mano</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
     <p class="vasijas-sub">Piezas únicas hechas con cariño. Elige tamaño y te llevamos la compra por WhatsApp.</p>
 
     <div class="vasijas-grid">
       <!-- Cilindro 12x13 -->
       <article class="vasija-card">
         <div class="vasija-thumb">
-          <img src="recursos/vasijacilindropequeño.jpeg" alt="Vasija Luna cilindro 12x13" loading="lazy">
+          <img src="recursos/vasijacilindropequeño.png" alt="Vasija Luna cilindro 12x13" loading="lazy">
         </div>
         <div class="vasija-meta">
           <h3>Luna — Cilindro</h3>
@@ -407,6 +500,40 @@
           </button>
         </div>
       </article>
+
+      <!-- 🆕 Vasija Corte Diagonal -->
+      <article class="vasija-card">
+        <div class="vasija-thumb">
+          <img src="recursos/vasija-diagonal.jpg" alt="Vasija corte diagonal 16x15" loading="lazy">
+        </div>
+        <div class="vasija-meta">
+          <h3>Corte Diagonal</h3>
+          <p class="vasija-dim">16 cm diámetro × 15 cm alto (diagonal)</p>
+          <button class="btn btn-secondary btn-whatsapp-vasija"
+                  data-name="Vasija Corte Diagonal"
+                  data-size="16x15"
+                  aria-label="Comprar vasija corte diagonal por WhatsApp">
+            Comprar por WhatsApp
+          </button>
+        </div>
+      </article>
+
+      <!-- 🆕 Tazón Ancestral -->
+      <article class="vasija-card">
+        <div class="vasija-thumb">
+          <img src="recursos/tazon-ancestral.jpg" alt="Tazón ancestral 18.5x7" loading="lazy">
+        </div>
+        <div class="vasija-meta">
+          <h3>Tazón Ancestral</h3>
+          <p class="vasija-dim">18.5 cm diámetro × 7 cm alto</p>
+          <button class="btn btn-secondary btn-whatsapp-vasija"
+                  data-name="Tazón Ancestral"
+                  data-size="18.5x7"
+                  aria-label="Comprar tazón ancestral por WhatsApp">
+            Comprar por WhatsApp
+          </button>
+        </div>
+      </article>
     </div>
   </div>
 </section>
@@ -429,6 +556,70 @@
   @media (min-width: 768px) {
     .vasija-meta h3 { font-size: 1.15rem; }
   }
+.vasijas-descripcion {
+  background-color: #faf7f5;
+  padding: 4rem 1rem;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.descripcion-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.descripcion-texto {
+  flex: 1 1 350px;
+  max-width: 600px;
+  text-align: left;
+  color: #4b3b2f;
+  line-height: 1.7;
+  font-size: 1.1rem;
+}
+
+.descripcion-titulo {
+  font-size: 2rem;
+  color: #7a4a2a;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.descripcion-imagenes {
+  flex: 1 1 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.img-wrapper {
+  width: 100%;
+  max-width: 320px; /* 🔹 controla el tamaño máximo */
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.img-wrapper img {
+  width: 100%;
+  height: 220px; /* 🔹 fija una altura equilibrada */
+  object-fit: cover; /* 🔹 evita deformación */
+  border-radius: 1rem;
+  display: block;
+}
+
+.img-caption {
+  font-size: 0.95rem;
+  color: #6b4b36;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
 </style>
 
 <!-- ====== JS: abrir WhatsApp con mensaje prellenado ====== -->
@@ -655,5 +846,35 @@
             faders.forEach(fader => appearOnScroll.observe(fader));
         });
     </script>
+    <!-- 🪶 Modal de imagen de vasija -->
+<div id="modal-vasija" class="modal-vasija">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <img id="modal-img" src="" alt="">
+    <h3 id="modal-titulo"></h3>
+    <p id="modal-descripcion"></p>
+  </div>
+</div>
+
 </body>
+<script>
+  const modal = document.getElementById("modal-vasija");
+  const modalImg = document.getElementById("modal-img");
+  const modalTitulo = document.getElementById("modal-titulo");
+  const modalDescripcion = document.getElementById("modal-descripcion");
+  const closeModal = document.querySelector(".close-modal");
+
+  document.querySelectorAll(".vasija-card img").forEach(img => {
+    img.addEventListener("click", () => {
+      modal.style.display = "flex";
+      modalImg.src = img.src;
+      modalTitulo.textContent = img.closest(".vasija-card").querySelector("h3").textContent;
+      modalDescripcion.textContent = img.dataset.descripcion || "Pieza artesanal única, hecha y pintada a mano con arcilla natural.";
+    });
+  });
+
+  closeModal.onclick = () => modal.style.display = "none";
+  modal.onclick = e => { if (e.target === modal) modal.style.display = "none"; };
+</script>
+
 </html>
