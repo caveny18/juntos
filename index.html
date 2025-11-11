@@ -27,13 +27,14 @@
         /* Reset y Base */
         * { box-sizing: border-box; }
         html, body { 
-            height: 100%; 
+            /* Se remueve height: 100% para permitir scroll si el contenido lo requiere */
+            min-height: 100vh; /* Mejor que height: 100% */
             margin: 0; 
             font-family: 'Poppins', sans-serif; 
             background: var(--gris-oscuro); 
             color: var(--blanco); 
             -webkit-font-smoothing: antialiased; 
-            overflow: hidden; 
+            overflow-x: hidden; /* Evita el scroll horizontal en móviles */
         }
         a { color: inherit; text-decoration: none; }
 
@@ -41,14 +42,17 @@
         .wrap { 
             min-height: 100vh; 
             display: flex; 
+            /* Uso de 'flex-start' en lugar de 'center' en mobile para mejor posicionamiento */
             align-items: center; 
             justify-content: center; 
             position: relative; 
             padding: 24px;
+            /* Se asegura que el wrap pueda contener el scroll en pantallas muy pequeñas */
+            overflow-y: auto; 
         }
 
         /* ------------------------------------------- */
-        /* Background carousel y Overlay */
+        /* Background carousel y Overlay (sin cambios funcionales) */
         /* ------------------------------------------- */
         .bg { position: fixed; inset: 0; z-index: -2; overflow: hidden; }
         .bg img{
@@ -108,7 +112,7 @@
             font-size: 3rem; 
             font-weight: 700;
             margin: 0; 
-            color: var(--blanco) !important; /* <-- ¡Esto debe funcionar! */
+            color: var(--blanco) !important; 
             line-height: 1.1;
             text-shadow: 0 2px 4px rgba(0,0,0,0.5); 
         }
@@ -116,7 +120,7 @@
         /* Párrafo: ¡SOLUCIÓN AGRESIVA! FORZAMOS GRIS CLARO */
         .card .brand p {
             margin: 18px auto 0 auto; 
-            color: var(--gris-texto) !important; /* <-- ¡Esto debe funcionar! */
+            color: var(--gris-texto) !important; 
             max-width: 450px; 
             font-weight: 400;
             font-size: 1.05rem;
@@ -141,6 +145,7 @@
             display: inline-flex; align-items: center; justify-content: center; 
             font-size: 16px;
             text-transform: uppercase;
+            width: 100%; /* Asegura que los botones sean 100% de ancho */
         }
         
         /* Botón Principal (Persona) */
@@ -190,18 +195,42 @@
         }
 
 
-        /* responsive */
+        /* ------------------------------------------- */
+        /* Media Query para Móviles (< 650px) */
+        /* ------------------------------------------- */
         @media(max-width:650px){
-            .card { 
-                padding: 30px;
-                max-width: 100%; 
-                margin: 0 10px;
+            /* Mejora en la alineación del 'wrap' para asegurar que la tarjeta esté visible incluso si la pantalla es muy corta */
+            .wrap { 
+                align-items: flex-start; /* Empieza arriba */
+                padding: 40px 15px; /* Más padding vertical y menos horizontal */
             }
-            .brand h1 { font-size: 2.2rem; }
-            .brand p { font-size: 0.95rem; }
-            .ctas { margin-top: 20px; }
-            .btn { padding: 14px 20px; font-size: 15px; }
-            .whatsapp { margin-top: 20px; }
+            .card { 
+                padding: 30px 20px; /* Reducido para móviles */
+                max-width: 100%; 
+                margin: 0; /* Centrado por el wrap, no necesita margin */
+            }
+            .logo {
+                font-size: 1rem;
+            }
+            .brand h1 { 
+                font-size: 2rem; /* Título más pequeño y conciso */
+            }
+            .brand p { 
+                font-size: 0.9rem; /* Texto de párrafo más adecuado */
+            }
+            .ctas { 
+                margin-top: 25px; 
+            }
+            .btn { 
+                padding: 14px 20px; 
+                font-size: 14px; /* Botones ligeramente más pequeños */
+                letter-spacing: 1px;
+            }
+            .whatsapp { 
+                margin-top: 20px; 
+                font-size: 0.85rem;
+                padding: 8px 14px;
+            }
         }
 
         /* page fade-out on nav */
@@ -217,7 +246,7 @@
         <div class="bg" aria-hidden="true">
             <img src="recursos/vasija_de_plato.png" alt="Vasija de plato en un ambiente elegante" class="show" data-index="0">
             <img src="recursos/vasija_diagonal.jpg" alt="Vasija moderna con corte diagonal" data-index="1">
-            <img src="recursos/fogatamamaehijo.jpeg" alt="Kit de fogata para regalo" data-index="2">
+            <img src="recursos/fogata_mama_ehijo.jpeg" alt="Kit de fogata para regalo" data-index="2">
             <img src="recursos/vasijacilindromediano.png" alt="Vasija cilíndrica mediana de diseño" data-index="3">
         </div>
 <div class="card" role="region" aria-label="Selección de inicio Juntos">
