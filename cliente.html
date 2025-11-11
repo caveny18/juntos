@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Juntos | Experiencias</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --color-primary: #d7a1a1;
+      --color-accent: #b36b6b;
+      --color-dark: #111;
+      --color-light: #fff;
+      --font-title: 'Playfair Display', serif;
+      --font-body: 'Poppins', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--color-light);
+      font-family: var(--font-body);
+      color: var(--color-dark);
+      overflow-x: hidden;
+      animation: fadeInPage 1.5s ease forwards;
+    }
+
+    @keyframes fadeInPage {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* =====================
+       HERO PRINCIPAL
+    ===================== */
+    .hero {
+      position: relative;
+      height: 90vh;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6)), 
+                  url('recursos/fogatamamaehijo.jpeg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
+
+    .hero h1 {
+      font-family: var(--font-title);
+      font-size: 3.5rem;
+      letter-spacing: 2px;
+      color: var(--color-primary);
+      text-shadow: 0 3px 10px rgba(0,0,0,0.4);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      color: #f9f9f9;
+    }
+/* =====================
+    HEADER Y NAVEGACIÓN
+===================== */
+header {
+    width: 100%;
+    padding: 15px 50px; /* Espaciado horizontal y vertical */
+    position: absolute; /* Para que quede encima del Hero */
+    top: 0;
+    left: 0;
+    z-index: 10; /* Asegura que esté por encima de todo */
+    display: flex;
+    justify-content: space-between; /* Espacia el menú y el botón */
+    align-items: center;
+}
+
+/* Estilo de la navegación principal (UL) */
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 25px; /* Espacio entre enlaces */
+}
+
+/* Estilo de los enlaces */
+header nav ul li a {
+    color: var(--color-light); /* Blanco sobre el fondo oscuro del hero */
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 5px 0;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    border-bottom: 2px solid transparent; /* Para el efecto hover */
+}
+
+/* Efecto hover: Rosa suave */
+header nav ul li a:hover,
+header nav ul li a.active {
+    color: var(--color-primary); 
+    border-bottom-color: var(--color-primary);
+}
+
+/* Estilo del botón de WhatsApp en el Header */
+.btn-whatsapp {
+    background-color: var(--color-accent); /* Rojo/Rosa oscuro */
+    color: var(--color-light); 
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-whatsapp:hover {
+    background-color: var(--color-primary); /* Rosa más claro al pasar el ratón */
+    color: var(--color-dark);
+    transform: translateY(-2px);
+}
+
+/* Adaptación para móviles */
+@media (max-width: 992px) {
+    header {
+        flex-direction: column;
+        padding: 15px 20px;
+        position: relative; /* Puedes hacerlo relativo si el hero no ocupa toda la altura */
+        background: rgba(17, 17, 17, 0.9); /* Fondo oscuro semitransparente para legibilidad en móviles */
+    }
+
+    header nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+    
+    header nav ul li a {
+        color: var(--color-light); /* Mantenemos el color claro sobre el nuevo fondo oscuro */
+    }
+}
+    /* =====================
+       SECCIÓN PRODUCTOS
+    ===================== */
+    section {
+      padding: 80px 20px;
+    }
+
+    .productos h2 {
+      text-align: center;
+      font-family: var(--font-title);
+      font-size: 2.5rem;
+      color: var(--color-accent);
+      margin-bottom: 2.5rem;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      justify-items: center;
+    }
+
+    .product-card {
+      background-color: #fff;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .product-card-content {
+      padding: 20px;
+    }
+
+    .product-card-content h3 {
+      font-family: var(--font-title);
+      color: var(--color-dark);
+      font-size: 1.4rem;
+    }
+
+    .product-price {
+      color: var(--color-accent);
+      font-weight: 600;
+      margin: 10px 0;
+    }
+
+    .product-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .btn {
+      border-radius: 40px;
+      padding: 8px 20px;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .btn-secondary {
+      background-color: var(--color-accent);
+      color: #fff;
+      border: none;
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--color-primary);
+      color: var(--color-dark);
+    }
+
+    .btn-ghost {
+      border: 2px solid var(--color-accent);
+      background: transparent;
+      color: var(--color-accent);
+    }
+
+    .btn-ghost:hover {
+      background-color: var(--color-accent);
+      color: #fff;
+    }
+
+    /* ====== TOPPING BOWL SECTION ====== */
+    .topping-bowl {
+      position: relative;
+      text-align: center;
+      padding: 100px 20px;
+      background: radial-gradient(circle at center, #fff6f6 0%, #ffeaea 100%);
+      overflow: hidden;
+    }
+
+    .topping-bowl h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      color: #b36b6b;
+      margin-bottom: 1rem;
+    }
+
+    .topping-bowl p {
+      font-size: 1.1rem;
+      color: #333;
+      max-width: 600px;
+      margin: 0 auto 2rem auto;
+      line-height: 1.5;
+    }
+
+    .topping-bowl img {
+      width: 260px;
+      max-width: 80%;
+      filter: drop-shadow(0 10px 25px rgba(0,0,0,0.25));
+      z-index: 2;
+      position: relative;
+    }
+
+    .btn-topping {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 0.9rem 2.3rem;
+      border-radius: 50px;
+      background-color: #b36b6b;
+      color: #fff;
+      font-weight: 600;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      box-shadow: 0 5px 15px rgba(179, 107, 107, 0.3);
+    }
+
+    .btn-topping:hover {
+      background-color: #d7a1a1;
+      color: #111;
+      transform: translateY(-4px);
+    }
+
+    /* ====== TOPPINGS ====== */
+    .topping-bowl .topping {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: float 6s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 3;
+      transform: translate(-50%, -50%);
+    }
+
+    .topping-bowl .topping img {
+      width: 90px;
+      transition: transform 0.4s ease;
+      filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.25));
+    }
+
+    .topping-bowl .topping-name {
+      margin-top: 6px;
+      font-size: 0.95rem;
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+      opacity: 0.95;
+      font-weight: 500;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+      50% { transform: translate(-50%, -50%) translateY(-12px); }
+    }
+
+    @media (max-width: 768px) {
+      .topping-bowl img { width: 200px; }
+      .topping-bowl .topping img { width: 70px; }
+      .topping-bowl .topping-name { font-size: 0.8rem; }
+    }
+
+    /* ====== FAMILIA & PERSONALIZACIONES ====== */
+.familia-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 50px;
+  padding: 100px 10%;
+  background: linear-gradient(135deg, #fff6f6 0%, #ffeaea 100%);
+}
+
+.familia-contenido {
+  text-align: left;
+}
+
+.familia-contenido h2 {
+  font-family: var(--font-title);
+  color: var(--color-accent);
+  font-size: 2.4rem;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.familia-contenido p {
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.familia-imagenes {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.familia-imagenes .img-columna {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.familia-imagenes img {
+  width: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  transition: transform 0.4s ease;
+}
+
+.familia-imagenes img:hover {
+  transform: scale(1.05);
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 900px) {
+  .familia-section {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 70px 20px;
+  }
+
+  .familia-imagenes {
+    flex-direction: column;
+  }
+
+  .familia-contenido h2 {
+    font-size: 2rem;
+  }
+}
+
+/* ===== HERO CON FONDO CAMBIANTE ===== */
+.hero-fade {
+  position: relative;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  color: white;
+}
+
+/* Las imágenes de fondo se cambian con opacidad */
+.hero-fade::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: bgFade 24s infinite;
+  z-index: 0;
+}
+
+/* Gradiente encima para mantener legible el texto */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.6));
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-family: var(--font-title);
+  font-size: 3.5rem;
+  letter-spacing: 2px;
+  color: var(--color-primary);
+  text-shadow: 0 3px 10px rgba(0,0,0,0.4);
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  color: #f9f9f9;
+}
+
+/* ===== ANIMACIÓN DE CAMBIO DE IMAGEN ===== */
+@keyframes bgFade {
+  0%, 25% { background-image: url('recursos/fogata_mama_ehijo.jpeg'); }
+  26%, 50% { background-image: url('recursos/vasija_diagonal.jpg'); }
+  51%, 75% { background-image: url('recursos/desayuno.jpeg'); }
+  76%, 100% { background-image: url('recursos/floreadobeig.jpeg'); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2.3rem; }
+  .hero p { font-size: 1rem; }
+}
+
+    /* =====================
+       FOOTER
+    ===================== */
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: #888;
+      font-size: 0.9rem;
+      background: #fafafa;
+    }
+  </style>
+</head>
+
+<body>
+
+    <header>
+
+        <nav>
+            <ul>
+                <li><a href="#productos">Experiencias Juntos</a></li>
+                <li><a href="#topping-bowl">Arma tu Topping Bowl</a></li>
+                <li><a href="#familia-section"">Bowls Favoritos</a></li>
+                <li><a href="index.html">INICIO</a></li>
+                <li><a href="#contacto-whatsapp">Contacto</a></li>
+            </ul>
+        </nav>
+        <a href="https://wa.me/51960778888?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20sus%20soluciones%20corporativas." class="btn btn-whatsapp" target="_blank">
+            Contáctanos por WhatsApp
+        </a>
+    </header>
+  <!-- HERO -->
+<!-- HERO con fondo animado -->
+<section class="hero hero-fade">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Experiencias que se sienten</h1>
+    <p>Regalos que cuentan historias, creados con alma y propósito.</p>
+  </div>
+</section>
+
+
+  <!-- EXPERIENCIAS -->
+  <section class="productos" id="productos">
+    <div class="container">
+      <h2>Experiencias Juntos</h2>
+      <div class="products-grid">
+        <!-- Fogata -->
+        <div class="product-card">
+          <img src="recursos/fogatayahecha.jpg" alt="Kit Fogata">
+          <div class="product-card-content">
+            <h3>Kit de Fogata en casa</h3>
+            <p class="product-price">S/ 127.00</p>
+            <div class="product-buttons">
+              <a href="https://wa.me/51913870416?text=Hola,%20quiero%20comprar%20el%20Kit%20de%20Fogata." target="_blank" class="btn btn-secondary">Comprar</a>
+              <button class="btn btn-ghost">Ver más</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Yeso -->
+        <div class="product-card">
+          <img src="recursos/yeso-1.png" alt="Manos eternas">
+          <div class="product-card-content">
+            <h3>Manos Eternas en Yeso</h3>
+            <p class="product-price">S/ 70.00</p>
+            <div class="product-buttons">
+              <a href="https://wa.me/51913870416?text=Hola,%20quiero%20comprar%20el%20kit%20de%20Manos%20Eternas." target="_blank" class="btn btn-secondary">Comprar</a>
+              <button class="btn btn-ghost">Ver más</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Desayuno -->
+        <div class="product-card">
+          <img src="recursos/desayuno.jpeg" alt="Desayuno Juntos">
+          <div class="product-card-content">
+            <h3>Desayuno Juntos</h3>
+            <p class="product-price">Desde S/ 25.00</p>
+            <div class="product-buttons">
+              <a href="https://wa.me/51913870416?text=Hola,%20me%20interesa%20un%20Desayuno%20Juntos." target="_blank" class="btn btn-secondary">Cotizar</a>
+              <button class="btn btn-ghost">Ver más</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Personalizado -->
+        <div class="product-card">
+          <img src="recursos/collage.jpeg" alt="Regalos juntos">
+          <div class="product-card-content">
+            <h3>Regalos Personalizados</h3>
+            <p class="product-price">Desde S/ 25.00</p>
+            <div class="product-buttons">
+              <a href="https://wa.me/51913870416?text=Hola,%20quiero%20un%20regalo%20personalizado." target="_blank" class="btn btn-secondary">Cotizar</a>
+              <button class="btn btn-ghost">Ver más</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOPPING BOWL -->
+  <section class="topping-bowl" id="topping-bowl">
+    <h2>Crea tu Bowl con Toppings</h2>
+    <p>Elige tu vasija favorita y personalízala con toppings únicos: caramelos, fotos, luces, piedritas y más. 
+      Cada topping desde <strong>S/5</strong>. Crea algo tan único como tú.</p>
+
+    <div style="position: relative; display: inline-block;">
+      <img src="recursos/vasija_cilindrica.png" alt="Topping Bowl">
+
+      <!-- Toppings flotantes alrededor -->
+      <div class="topping" style="top: 15%; left: 65%; animation-delay: 0s;">
+        <img src="recursos/caramelo.png" alt="Caramelos">
+        <span class="topping-name">Caramelos</span>
+      </div>
+
+      <div class="topping" style="top: 25%; left: 35%; animation-delay: 1s;">
+        <img src="recursos/fotos.png" alt="Fotitos personalizadas">
+        <span class="topping-name">Fotitos</span>
+      </div>
+
+      <div class="topping" style="top: 70%; left: 30%; animation-delay: 2s;">
+        <img src="recursos/piedrita.png" alt="Piedritas de colores">
+        <span class="topping-name">Piedritas</span>
+      </div>
+
+      <div class="topping" style="top: 68%; left: 75%; animation-delay: 3s;">
+        <img src="recursos/flores.png" alt="Flores decorativas">
+        <span class="topping-name">Flores</span>
+      </div>
+    </div>
+
+    <a href="https://wa.me/51913870416?text=Hola,%20quiero%20crear%20mi%20Topping%20Bowl%20personalizado." target="_blank" class="btn-topping">Empieza tu creación</a>
+  </section>
+
+<!-- SECCIÓN FAMILIA Y PERSONALIZACIONES -->
+<section class="familia-section" id="familia-section">
+  <div class="familia-contenido">
+    <h2>Algunos de nuestros bowls<br>y personalizaciones favoritas 💖</h2>
+    <p>
+      Cada creación tiene una historia. En <strong>Juntos</strong>, transformamos simples vasijas 
+      en recuerdos únicos, llenos de color, emoción y mucho cariño.  
+      <br><br>
+      Explora algunas de las personalizaciones de nuestra familia de creadores 🌸
+    </p>
+    <a href="https://wa.me/51913870416?text=Hola,%20quiero%20personalizar%20mi%20bowl%20como%20los%20de%20la%20familia%20Juntos." 
+       target="_blank" class="btn-topping">
+      Crea el tuyo
+    </a>
+  </div>
+
+  <div class="familia-imagenes">
+    <div class="img-columna">
+      <img src="recursos/personalizacion_navideña.png" alt="Bowl personalizado 1">
+      <img src="recursos/capibara.jpeg" alt="Bowl personalizado 2">
+    </div>
+    <div class="img-columna">
+      <img src="recursos/floreadobeig.jpeg" alt="Bowl personalizado 3">
+      <img src="recursos/navideño.jpeg" alt="Bowl personalizado 4">
+    </div>
+  </div>
+</section>
+
+  <!-- FOOTER -->
+  <footer>© 2025 Juntos — Detalles con propósito.</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

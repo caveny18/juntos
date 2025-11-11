@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juntos | Soluciones Corporativas Premium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /*
+        * =================================================================
+        * ESTILOS CSS COMPLETOS Y REFINADOS (INCLUYE MOVIMIENTO Y MODAL)
+        * =================================================================
+        */
+
+        :root {
+            --color-primary: #1e1b19; /* Marrón/Negro muy oscuro */
+            --color-accent: #b86e40; /* Terracota cálido y elegante */
+            --color-bg: #fdf8f4; /* Crema extra-cálido */
+            --color-light: #fff;
+            --font-title: 'Cormorant Garamond', serif;
+            --font-body: 'Work Sans', sans-serif;
+
+            /* Colores de diseño */
+            --color-header-bg: #FFFFFF;
+            --color-header-text: #333333;
+            --color-whatsapp-btn: #39e35c;
+            --color-whatsapp-btn-hover: #2dbd4b;
+            --color-pink-btn: #f76283;
+            --color-pink-btn-hover: #e04c6e;
+            --color-dark-btn: #333333;
+            --color-dark-btn-hover: #1a1a1a;
+        }
+
+        /* GENERAL */
+        body {
+            margin: 0;
+            font-family: var(--font-body);
+            background: var(--color-bg);
+            color: var(--color-primary);
+            overflow-x: hidden;
+            animation: fadeIn 1.2s ease;
+            line-height: 1.6;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            font-family: var(--font-title);
+            font-weight: 700;
+            font-size: 3rem;
+            letter-spacing: 0.5px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* BOTONES GLOBALES Y EFECTOS DE MOVIMIENTO */
+        .btn {
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* TRANSICIÓN SUAVE */
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin: 5px;
+            text-transform: uppercase; /* ESTILO ADICIONAL */
+        }
+
+        /* Efecto de elevación para la mayoría de los botones */
+        .btn-whatsapp:hover, .btn-pink:hover, .btn-dark:hover, .btn-outline-dark:hover, .btn-regalos:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-whatsapp { background: var(--color-whatsapp-btn); color: var(--color-light); }
+        .btn-whatsapp:hover { background: var(--color-whatsapp-btn-hover); }
+
+        .btn-pink { background: var(--color-pink-btn); color: var(--color-light); }
+        .btn-pink:hover { background: var(--color-pink-btn-hover); }
+
+        .btn-dark { background: var(--color-dark-btn); color: var(--color-light); }
+        .btn-dark:hover { background: var(--color-dark-btn-hover); }
+
+        .btn-outline-dark { background: transparent; color: var(--color-primary); border: 2px solid var(--color-primary); }
+        .btn-outline-dark:hover { background: var(--color-primary); color: var(--color-light); border-color: var(--color-primary); }
+
+        /* Botones de producto (Ficha Técnica/Comprar) */
+        .btn-secondary { background: var(--color-primary); color: var(--color-light); width: 100%; box-sizing: border-box; padding: 10px; border-radius: 6px; margin-bottom: 10px; transition: all 0.3s ease; }
+        .btn-secondary:hover { background: var(--color-accent); transform: scale(1.02); }
+
+        /* NAVBAR */
+        header { background: var(--color-header-bg); color: var(--color-header-text); display: flex; justify-content: space-between; align-items: center; padding: 15px 50px; position: sticky; top: 0; z-index: 10; box-shadow: 0 2px 15px rgba(0,0,0,0.08); }
+        header .logo { display: flex; align-items: center; font-family: var(--font-title); font-size: 1.8rem; font-weight: 700; letter-spacing: 1px; }
+        header .logo img { height: 30px; margin-right: 10px; }
+        header nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 30px; }
+        header nav a { font-weight: 500; font-size: 1.05rem; position: relative; }
+        header nav a::after { content: ''; position: absolute; width: 0; height: 2px; background: var(--color-accent); left: 0; bottom: -5px; transition: width 0.3s ease-in-out; }
+        header nav a:hover::after { width: 100%; }
+
+        /* HERO */
+        .hero-empresas { background: var(--color-bg); color: var(--color-primary); display: flex; flex-wrap: wrap; justify-content: center; align-items: center; padding: 100px 50px; text-align: left; min-height: 70vh; }
+        .hero-content { flex: 1; max-width: 600px; margin-right: 50px; }
+        .hero-content h2 { font-family: var(--font-title); font-size: 4.5rem; font-weight: 700; line-height: 1.1; margin-bottom: 25px; color: var(--color-primary); }
+        .hero-content p { font-size: 1.25rem; line-height: 1.6; margin-bottom: 40px; color: #555; }
+        .hero-buttons .btn { margin-right: 15px; margin-bottom: 15px; }
+        .hero-image { flex: 1; max-width: 500px; position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
+        .hero-image img { width: 100%; height: auto; display: block; border-radius: 15px; transition: transform 0.5s ease; }
+        .hero-image:hover img { transform: scale(1.05); } /* EFECTO DE ZOOM SUTIL */
+
+        /* QUIÉNES SOMOS */
+        .quienes-somos { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 90px; padding: 120px 50px; background: var(--color-light); }
+        .quienes-somos img { width: 400px; max-width: 100%; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); object-fit: cover; height: 450px; transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.6s ease; }
+        .quienes-somos img:hover { transform: scale(1.02); box-shadow: 0 15px 40px rgba(0,0,0,0.3); }
+        .quienes-somos div { max-width: 550px; }
+        .quienes-somos h2 { font-size: 3rem; margin-bottom: 25px; position: relative; }
+        .quienes-somos h2::after { content: ''; position: absolute; bottom: -8px; left: 0; width: 100px; height: 4px; background: var(--color-accent); border-radius: 3px; transition: all 0.3s ease; }
+        .quienes-somos p { margin-top: 20px; line-height: 1.75; color: #444; font-size: 1.15rem; font-weight: 400; }
+
+        /* VASIJAS */
+        .vasijas-section { padding: 120px 50px; text-align: center; background: var(--color-bg); }
+        .vasijas-section h2 { font-size: 3.5rem; margin-bottom: 15px; color: var(--color-primary); position: relative; }
+        /* Línea central para el título de Vasijas (Desktop) */
+        .vasijas-section h2::after { content: ''; position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%); width: 100px; height: 4px; background: var(--color-accent); border-radius: 3px; transition: all 0.3s ease; }
+        .vasijas-section p { color: #666; margin-bottom: 4rem; font-size: 1.15rem; }
+        .vasijas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; }
+        .vasija-card { background: var(--color-light); border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1); overflow: hidden; display: flex; flex-direction: column; }
+        .vasija-card:hover { transform: translateY(-8px); box-shadow: 0 20px 45px rgba(0,0,0,0.2); }
+        .vasija-thumb { flex-grow: 1; display: flex; align-items: center; justify-content: center; background: #f9f5f2; overflow: hidden; }
+        .vasija-thumb img { width: 100%; height: 280px; object-fit: contain; padding: 15px; transition: transform 0.5s ease; }
+        .vasija-card:hover .vasija-thumb img { transform: scale(1.05); } /* Zoom en la imagen del producto */
+        .vasija-meta { padding: 25px 25px 15px; text-align: left; }
+        .vasija-meta h3 { font-family: var(--font-body); color: var(--color-primary); margin-bottom: 5px; font-size: 1.35rem; font-weight: 600; }
+        .vasija-dim { color: var(--color-accent); margin-bottom: 20px; font-size: 1rem; font-weight: 500; letter-spacing: 0.5px; }
+        .vasija-actions { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+
+        /* REGALOS */
+        .regalos-section { background: linear-gradient(135deg, var(--color-accent), #8c5a3b); color: #fff; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; padding: 120px 50px; gap: 80px; }
+        .regalos-texto { max-width: 550px; }
+        .regalos-texto h2 { font-size: 3.2rem; margin-bottom: 25px; color: var(--color-light); text-shadow: 0 1px 5px rgba(0,0,0,0.2); }
+        .regalos-texto p { line-height: 1.8; margin-bottom: 20px; color: #f8f8f8; font-size: 1.15rem; }
+        .regalos-imagenes { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+        .regalos-imagenes img { width: 250px; height: 250px; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.4); transition: transform 0.5s ease; object-fit: cover; filter: grayscale(10%) contrast(105%); }
+        .regalos-imagenes img:hover { transform: scale(1.05) rotate(1deg); box-shadow: 0 15px 40px rgba(0,0,0,0.5); filter: grayscale(0) contrast(100%); }
+        .btn-regalos { background: var(--color-light); color: var(--color-accent); border: 2px solid var(--color-light); margin-top: 15px; }
+        .btn-regalos:hover { background: var(--color-accent); color: var(--color-light); border-color: var(--color-light); }
+
+        /* WHATSAPP BURBUJA */
+        .whatsapp-float { position: fixed; width: 58px; height: 58px; bottom: 30px; right: 30px; background-color: var(--color-whatsapp-btn); color: var(--color-light); border-radius: 50%; text-align: center; font-size: 32px; z-index: 100; box-shadow: 0 4px 10px rgba(0,0,0,0.3); display: flex; justify-content: center; align-items: center; transition: all 0.3s ease; }
+        .whatsapp-float:hover { transform: scale(1.15) rotate(5deg); background-color: var(--color-whatsapp-btn-hover); }
+
+        /* MODAL */
+        .modal {
+            position: fixed;
+            z-index: 101;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden; /* Oculto y no accesible por defecto */
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        }
+
+        .modal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: var(--color-light);
+            margin: auto;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 500px;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            transform: translateY(-20px);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .modal.show .modal-content {
+            transform: translateY(0);
+        }
+
+        .close-button { color: #aaa; position: absolute; top: 15px; right: 20px; font-size: 30px; font-weight: bold; cursor: pointer; }
+        .close-button:hover, .close-button:focus { color: var(--color-accent); text-decoration: none; cursor: pointer; }
+        .modal-content h3 { font-family: var(--font-title); font-size: 2rem; color: var(--color-primary); margin-bottom: 15px; }
+        .modal-content p { font-size: 1.1rem; line-height: 1.7; color: #444; }
+
+
+        /* FOOTER */
+        footer { background: var(--color-primary); color: #ccc; padding: 50px 20px; font-size: 1rem; letter-spacing: 0.8px; }
+        footer strong { color: var(--color-accent); font-weight: 600; }
+
+        /* MEDIA QUERIES para Responsividad */
+        @media (max-width: 1024px) {
+            .hero-content { margin-right: 30px; }
+            .hero-content h2 { font-size: 3.8rem; }
+            header { padding: 15px 30px; }
+            header nav ul { gap: 20px; }
+        }
+
+        @media (max-width: 900px) {
+            .hero-empresas { 
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            .hero-content { margin-right: 0; margin-top: 50px; max-width: 100%; }
+            .hero-content h2 { font-size: 3rem; }
+            .hero-buttons { display: flex; flex-wrap: wrap; justify-content: center; }
+
+            .quienes-somos { gap: 40px; text-align: center; }
+            /* Centrar línea en móvil */
+            .quienes-somos h2::after { left: 50%; transform: translateX(-50%); }
+
+            .quienes-somos img { width: 100%; height: auto; max-width: 450px; }
+            .vasijas-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .regalos-section { flex-direction: column; text-align: center; }
+            .regalos-texto { max-width: 100%; }
+            .regalos-imagenes { margin-top: 30px; }
+        }
+
+        @media (max-width: 768px) {
+            header { flex-wrap: wrap; justify-content: center; gap: 15px; padding: 15px 20px; }
+            header .logo { margin-bottom: 10px; }
+            header nav { order: 3; width: 100%; text-align: center; margin-top: 10px; }
+            header nav ul { justify-content: center; gap: 15px; }
+            .hero-content h2 { font-size: 2.8rem; }
+            .hero-content p { font-size: 1.1rem; }
+            .quienes-somos, .vasijas-section, .regalos-section { padding: 80px 20px; }
+            /* Asegurar centrado de línea en móvil */
+            .vasijas-section h2::after { left: 50%; transform: translateX(-50%); }
+        }
+
+        @media (max-width: 480px) {
+            header .logo { font-size: 1.5rem; }
+            header nav ul { flex-direction: column; }
+            .hero-content h2 { font-size: 2.2rem; }
+            .hero-content p { font-size: 1rem; }
+            .hero-buttons .btn { width: 100%; margin-right: 0; }
+            .whatsapp-float { width: 50px; height: 50px; font-size: 26px; bottom: 20px; right: 20px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+
+        <nav>
+            <ul>
+                <li><a href="#vasijas-section">Productos</a></li>
+                <li><a href="#regalos-section">Regalos Corporativos</a></li>
+                <li><a href="#quienes-somos">Quiénes somos</a></li>
+                <li><a href="index.html">INICIO</a></li>
+                <li><a href="#contacto-whatsapp">Contacto</a></li>
+            </ul>
+        </nav>
+        <a href="https://wa.me/51960778888?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20sus%20soluciones%20corporativas." class="btn btn-whatsapp" target="_blank">
+            Contáctanos por WhatsApp
+        </a>
+    </header>
+
+    <section class="hero-empresas">
+        <div class="hero-content">
+            <h2>Nunca olvides un regalo importante</h2>
+            <p>Juntos es tu agente personal de regalos: te recordamos fechas y te ayudamos a elegir el detalle perfecto.</p>
+            <div class="hero-buttons">
+                <a href="#vasijas-section" class="btn btn-pink">Ver productos</a>
+                <a href="#regalos-section" class="btn btn-outline-dark">Regalos Corporativos</a>
+                <a href="#quienes-somos" class="btn btn-dark">Quiénes Somos</a>
+                <a href="https://wa.me/51960778888?text=Hola%2C%20quisiera%20ponerme%20en%20contacto%20para%20un%20proyecto." class="btn btn-whatsapp" target="_blank">Contactar por WhatsApp</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="recursos/1ra.png" alt="Persona entregando un regalo Juntos">
+        </div>
+    </section>
+
+    <section id="quienes-somos" class="quienes-somos">
+        <img src="recursos/arcilla.jpg" alt="Taller artesanal Juntos">
+        <div>
+            <h2>Quiénes Somos</h2>
+            <p>Somos fabricantes peruanos de objetos personalizados. En <strong>Juntos</strong>, trabajamos con detalle y alma para crear piezas que comuniquen valores, identidad y cercanía.</p>
+            <p>Nuestra filosofía se basa en el <strong>diseño contemporáneo</strong> y la calidad artesanal. Desde nuestras vasijas de autor hasta kits corporativos, cada artículo está imbuido con el toque humano que su marca merece.</p>
+        </div>
+    </section>
+
+    <section id="vasijas-section" class="vasijas-section">
+        <h2>Colección de Vasijas de Autor</h2>
+        <p>Diseños exclusivos, medidas a elección y acabados <strong>premium</strong> para la ambientación de tu marca o tus regalos conmemorativos.</p>
+
+        <div class="vasijas-grid">
+            <article class="vasija-card">
+                <div class="vasija-thumb"><img src="recursos/vasijacilindropequeño.png" alt="Vasija Luna"></div>
+                <div class="vasija-meta">
+                    <h3>Luna — Cilindro</h3>
+                    <p class="vasija-dim">12 × 13 cm · Acabado Mate</p>
+                    <div class="vasija-actions">
+                        <button class="btn btn-secondary open-modal" data-vasija="Luna">Ficha Técnica</button>
+                        <a href="https://wa.me/51960778888?text=Hola%2C%20estoy%20interesado%20en%20la%20vasija%20Luna%20-%20Cilindro." class="btn btn-whatsapp" target="_blank">Comprar ahora</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="vasija-card">
+                <div class="vasija-thumb"><img src="recursos/vasijacilindromediano.png" alt="Vasija Elegante"></div>
+                <div class="vasija-meta">
+                    <h3>Elegante — Cilindro</h3>
+                    <p class="vasija-dim">18 × 19 cm · Acabado Brillante</p>
+                    <div class="vasija-actions">
+                        <button class="btn btn-secondary open-modal" data-vasija="Elegante">Ficha Técnica</button>
+                        <a href="https://wa.me/51960778888?text=Hola%2C%20estoy%20interesado%20en%20la%20vasija%20Elegante%20-%20Cilindro." class="btn btn-whatsapp" target="_blank">Comprar ahora</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="vasija-card">
+                <div class="vasija-thumb"><img src="recursos/vasija_cilindrica.png" alt="Vasija Estrella"></div>
+                <div class="vasija-meta">
+                    <h3>Estrella — Esférica</h3>
+                    <p class="vasija-dim">17 × 19 cm · Terracota Natural</p>
+                    <div class="vasija-actions">
+                        <button class="btn btn-secondary open-modal" data-vasija="Estrella">Ficha Técnica</button>
+                        <a href="https://wa.me/51960778888?text=Hola%2C%20estoy%20interesado%20en%20la%20vasija%20Estrella%20-%20Esf%C3%A9rica." class="btn btn-whatsapp" target="_blank">Comprar ahora</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="vasija-card">
+                <div class="vasija-thumb"><img src="recursos/vasija_de_plato.png" alt="Vasija Platico"></div>
+                <div class="vasija-meta">
+                    <h3>Platico — Redondeada</h3>
+                    <p class="vasija-dim">14 × 28 cm · Negro Profundo</p>
+                    <div class="vasija-actions">
+                        <button class="btn btn-secondary open-modal" data-vasija="Platico">Ficha Técnica</button>
+                        <a href="https://wa.me/51960778888?text=Hola%2C%20estoy%20interesado%20en%20la%20vasija%20Platico%20-%20Redondeada." class="btn btn-whatsapp" target="_blank">Comprar ahora</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="vasija-card">
+                <div class="vasija-thumb"><img src="recursos/vasijafloreada.png" alt="Vasija Elegancia"></div>
+                <div class="vasija-meta">
+                    <h3>Elegancia — Con blondas</h3>
+                    <p class="vasija-dim">17 × 22 cm · Blanco Perla</p>
+                    <div class="vasija-actions">
+                        <button class="btn btn-secondary open-modal" data-vasija="Elegancia">Ficha Técnica</button>
+                        <a href="https://wa.me/51960778888?text=Hola%2C%20estoy%20interesado%20en%20la%20vasija%20Elegancia%20-%20Con%20blondas." class="btn btn-whatsapp" target="_blank">Comprar ahora</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="vasija-card">
+                <div class="vasija-thumb"><img src="recursos/vasija_diagonal.jpg" alt="Vasija Corte Diagonal"></div>
+                <div class="vasija-meta">
+                    <h3>Corte Diagonal</h3>
+                    <p class="vasija-dim">16 × 15 cm · Diseño Geométrico</p>
+                    <div class="vasija-actions">
+                        <button class="btn btn-secondary open-modal" data-vasija="Corte Diagonal">Ficha Técnica</button>
+                        <a href="https://wa.me/51960778888?text=Hola%2C%20estoy%20interesado%20en%20la%20vasija%20Corte%20Diagonal." class="btn btn-whatsapp" target="_blank">Comprar ahora</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="vasija-card">
+                <div class="vasija-thumb"><img src="recursos/tazon-ancestral.jpg" alt="Tazón Ancestral"></div>
+                <div class="vasija-meta">
+                    <h3>Tazón Ancestral</h3>
+                    <p class="vasija-dim">18.5 × 7 cm · Inspiración Prehispánica</p>
+                    <div class="vasija-actions">
+                        <button class="btn btn-secondary open-modal" data-vasija="Tazón Ancestral">Ficha Técnica</button>
+                        <a href="https://wa.me/51960778888?text=Hola%2C%20estoy%20interesado%20en%20el%20Taz%C3%B3n%20Ancestral." class="btn btn-whatsapp" target="_blank">Comprar ahora</a>
+                    </div>
+                </div>
+            </article>
+
+            <a href="https://wa.me/51960778888?text=Hola%2C%20me%20gustar%C3%ADa%20solicitar%20el%20cat%C3%A1logo%20completo%20de%20vasijas." class="btn btn-main btn-whatsapp" style="grid-column: 1 / -1; margin-top: 20px;" target="_blank">Ver Catálogo Completo</a>
+        </div>
+    </section>
+
+    <section id="regalos-section" class="regalos-section">
+        <div class="regalos-texto">
+            <h2>Regalos Corporativos & Merchandising</h2>
+            <p>Diseñamos experiencias que fortalecen vínculos entre marcas y personas: kits institucionales, decoraciones, detalles conmemorativos y regalos personalizados.</p>
+            <p>Cada pieza lleva nuestra huella: <strong>hecha a mano, con propósito y con estilo que perdura.</strong></p>
+            <a href="https://wa.me/51960778888?text=Hola%2C%20me%20interesan%20los%20regalos%20corporativos%20y%20merchandising.%20Quisiera%20cotizar%20un%20proyecto." class="btn btn-main btn-regalos" target="_blank">Cotizar mi Regalo Único</a>
+        </div>
+
+        <div class="regalos-imagenes">
+            <img src="recursos/corporativo1.png" alt="Regalo corporativo artesanal">
+            <img src="recursos/generico.png" alt="Merchandising empresarial">
+            <img src="recursos/capibara.jpeg" alt="Kit personalizado">
+        </div>
+    </section>
+
+    <a href="https://wa.me/51960778888" id="contacto-whatsapp" class="whatsapp-float" target="_blank" title="Chatea con nosotros en WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <footer>
+        © 2025 <strong>Juntos</strong> — Creatividad con propósito. | Diseño y Producción 100% Peruana.
+    </footer>
+
+    <div id="fichaTecnicaModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3>Ficha Técnica de Vasija <span id="modalVasijaNombre"></span></h3>
+            <p>Esta pieza ha sido <strong>diseñada y fabricada a mano por artistas peruanos</strong>, utilizando <strong>arcilla de alta calidad</strong>.</p>
+            <p>Cada vasija es <strong>horneada a altas temperaturas</strong> para garantizar su durabilidad y un acabado excepcional, reflejando la tradición y el talento artesanal de nuestro país.</p>
+            <p>Una verdadera obra de arte que lleva consigo la esencia de la cultura y la dedicación.</p>
+        </div>
+    </div>
+
+    <script>
+        // --- JavaScript para el Modal ---
+        const modal = document.getElementById("fichaTecnicaModal");
+        const closeButton = document.querySelector(".close-button");
+        const openModalButtons = document.querySelectorAll(".open-modal");
+        const modalVasijaNombre = document.getElementById("modalVasijaNombre");
+
+        openModalButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                const vasijaName = button.getAttribute("data-vasija");
+                modalVasijaNombre.textContent = vasijaName; // Actualiza el nombre de la vasija en el modal
+                modal.classList.add("show");
+            });
+        });
+
+        closeButton.addEventListener("click", () => {
+            modal.classList.remove("show");
+        });
+
+        // Cierra el modal si se hace clic fuera de él
+        window.addEventListener("click", (event) => {
+            if (event.target == modal) {
+                modal.classList.remove("show");
+            }
+        });
+    </script>
+
+</body>
+</html>
