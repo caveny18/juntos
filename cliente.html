@@ -77,6 +77,63 @@ header {
     justify-content: space-between; /* Espacia el menú y el botón */
     align-items: center;
 }
+/* ====== MENÚ HAMBURGUESA ====== */
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  color: var(--color-light);
+  cursor: pointer;
+  z-index: 20;
+  background: none;
+  border: none;
+}
+
+/* Estado activo: cuando el menú está abierto */
+nav.active {
+  display: block;
+  position: absolute;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  background-color: rgba(17, 17, 17, 0.95);
+  padding: 20px 0;
+  text-align: center;
+  animation: slideDown 0.4s ease forwards;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Ocultar el nav en móviles inicialmente */
+@media (max-width: 992px) {
+  nav {
+    display: none;
+    width: 100%;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    background: rgba(17, 17, 17, 0.9);
+  }
+
+  header nav ul {
+    flex-direction: column;
+    padding: 0;
+    gap: 12px;
+  }
+
+  header nav ul li a {
+    color: var(--color-light);
+    font-size: 1.1rem;
+  }
+}
 
 /* Estilo de la navegación principal (UL) */
 header nav ul {
@@ -478,21 +535,27 @@ header nav ul li a.active {
 
 <body>
 
-    <header>
+<header>
+  <div class="logo">
+    <img src="recursos/logo.png" alt="Logo Juntos" height="50">
+  </div>
 
-        <nav>
-            <ul>
-                <li><a href="#productos">Experiencias Juntos</a></li>
-                <li><a href="#topping-bowl">Arma tu Topping Bowl</a></li>
-                <li><a href="#familia-section"">Bowls Favoritos</a></li>
-                <li><a href="index.html">INICIO</a></li>
-                <li><a href="#contacto-whatsapp">Contacto</a></li>
-            </ul>
-        </nav>
-        <a href="https://wa.me/51960778888?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20sus%20soluciones%20corporativas." class="btn btn-whatsapp" target="_blank">
-            Contáctanos por WhatsApp
-        </a>
-    </header>
+  <button class="menu-toggle" id="menu-toggle">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+
+  <nav id="nav-menu">
+    <ul>
+      <li><a href="index.html" class="active">Inicio</a></li>
+      <li><a href="experiencias.html">Experiencias</a></li>
+      <li><a href="productos.html">Productos</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <a href="https://wa.me/51999999999" class="btn-whatsapp">WhatsApp</a>
+</header>
+
   <!-- HERO -->
 <!-- HERO con fondo animado -->
 <section class="hero hero-fade">
@@ -664,5 +727,16 @@ header nav ul li a.active {
 
         // ... (Tu otro JS para el carousel y fade-out si se agrega a este archivo) ...
     </script>
+    <script>
+  const toggleBtn = document.getElementById('menu-toggle');
+  const navMenu = document.getElementById('nav-menu');
+
+  toggleBtn.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+    toggleBtn.querySelector('i').classList.toggle('fa-bars');
+    toggleBtn.querySelector('i').classList.toggle('fa-xmark');
+  });
+</script>
+
 </body>
 </html>
