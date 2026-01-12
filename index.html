@@ -91,7 +91,41 @@
             background: rgba(255, 255, 255, 0.08);
             transform: translateY(-3px);
         }
+.social-links {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+            justify-content: center;
+        }
 
+        .social-links a {
+            text-decoration: none;
+            color: var(--white);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            opacity: 0.5;
+            transition: all 0.4s ease;
+        }
+
+        .social-links a:hover {
+            opacity: 1;
+            transform: translateY(-3px);
+            color: var(--accent); /* Cambia al rosa de tu marca al pasar el mouse */
+        }
+
+        .social-links svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .social-links span {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-weight: 300;
+        }
         /* EFECTO WHATSAPP */
         .nav-card.whatsapp-glow {
             border-color: rgba(37, 211, 102, 0.15);
@@ -184,18 +218,10 @@
                 <span class="arrow-icon">→</span>
             </a>
 
-            <a href="#" class="nav-card">
+            <a href="empresa.html" class="nav-card">
                 <div>
                     <span class="main-label">Decoración del Hogar</span>
                     <span class="sub-label">Hecho a mano</span>
-                </div>
-                <span class="arrow-icon">→</span>
-            </a>
-
-            <a href="#" class="nav-card">
-                <div>
-                    <span class="main-label">Accesorios de Diseño</span>
-                    <span class="sub-label">Arte en barro</span>
                 </div>
                 <span class="arrow-icon">→</span>
             </a>
@@ -208,7 +234,7 @@
                 <span class="arrow-icon">→</span>
             </a>
             
-            <a href="empresa.html" class="nav-card">
+            <a href="ARTE.html" class="nav-card">
                 <div>
                     <span class="main-label">Cuadros al Óleo</span>
                     <span class="sub-label">Piezas originales</span>
@@ -216,7 +242,16 @@
                 <span class="arrow-icon">→</span>
             </a>
         </nav>
-
+<div class="social-links">
+            <a href="https://www.instagram.com/somosjuntos_com/?igsh=MWFlZ3d3YjAzMzl2ag%3D%3D&utm_source=qr#" target="_blank" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                <span>Instagram</span>
+            </a>
+            <a href="https://www.tiktok.com/@somosjuntos.com?_r=1&_t=ZS-93150knf565" target="_blank" aria-label="TikTok">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+                <span>TikTok</span>
+            </a>
+        </div>
         <section class="quote-box">
             <p>"Un objeto solo es arte cuando logra que las personas se sientan Juntos."</p>
         </section>

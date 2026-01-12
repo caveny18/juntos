@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="oleos">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Óleos — Ynes Cabrera | Galería Profesional</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&family=Cormorant+Garamond:ital,wght@0,300;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #080808;
+      --gold: #d4af37;
+      --white-soft: #e0e0e0;
+      --font-serif: 'Cormorant Garamond', serif;
+      --font-sans: 'Montserrat', sans-serif;
+    }
+
+    body { background: var(--bg-dark); color: var(--white-soft); font-family: var(--font-sans); margin: 0; overflow-x: hidden; }
+
+    /* HEADER */
+    .site-header {
+      position: fixed; top: 0; width: 100%; z-index: 1000;
+      background: rgba(8, 8, 8, 0.95); backdrop-filter: blur(15px);
+      padding: 1rem 5%; border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+    }
+    .nav-wrap { display: flex; justify-content: space-between; align-items: center; }
+    .brand { font-family: var(--font-serif); font-size: 1.6rem; letter-spacing: 4px; color: #fff; text-decoration: none; }
+    
+    .main-nav { display: flex; align-items: center; }
+    .main-nav a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.7rem; margin-left: 20px; text-transform: uppercase; transition: 0.4s; letter-spacing: 1px; }
+    .main-nav a.active { color: var(--gold); }
+    .btn-back { border: 1px solid var(--gold); padding: 5px 12px; border-radius: 20px; color: var(--gold) !important; }
+    .btn-back:hover { background: var(--gold); color: #000 !important; }
+
+    /* HERO */
+    .cat-hero { height: 40vh; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .cat-hero video { position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0.3; }
+    .cat-hero__title { position: relative; font-family: var(--font-serif); font-size: 4rem; font-style: italic; letter-spacing: 12px; text-align: center; }
+
+    /* GRID */
+    .products { padding: 60px 8%; }
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 50px; }
+    .product-card { background: transparent; }
+
+    .product-media { 
+      position: relative; 
+      aspect-ratio: 4/5; 
+      overflow: hidden; 
+      background: #111;
+      border-radius: 2px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .img-container { width: 100%; height: 100%; position: relative; }
+    .img-main, .img-hover {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0; left: 0;
+      transition: opacity 0.7s ease-in-out, transform 1s ease;
+    }
+    .img-hover { opacity: 0; } 
+
+    .product-card:hover .img-main { opacity: 0; transform: scale(1.05); }
+    .product-card:hover .img-hover { opacity: 1; transform: scale(1.02); }
+
+    /* BOTÓN WHATSAPP SOBRE IMAGEN */
+    .view-details {
+      position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+      background: #25d366; color: #fff; padding: 10px 20px;
+      font-size: 0.65rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+      opacity: 0; transition: 0.4s; z-index: 10; border-radius: 50px;
+      text-decoration: none; display: flex; align-items: center; gap: 8px;
+    }
+    .product-card:hover .view-details { opacity: 1; }
+
+    /* CUERPO */
+    .product-body { padding: 25px 0; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 10px; }
+    .product-title { font-family: var(--font-serif); font-size: 1.5rem; margin: 0; letter-spacing: 1px; color: #fff; }
+    .product-meta { font-size: 0.75rem; color: var(--gold); margin-bottom: 15px; display: block; font-weight: 600; }
+
+    .buy-row { display: flex; gap: 10px; }
+    .buy-btn {
+      flex: 1; background: transparent; border: 1px solid rgba(255,255,255,0.2);
+      color: #fff; padding: 10px; font-size: 0.65rem; text-transform: uppercase;
+      letter-spacing: 1px; cursor: pointer; transition: 0.3s;
+    }
+    .buy-btn:hover { background: #fff; color: #000; border-color: #fff; }
+    .buy-btn[data-buy="original"] { border-color: var(--gold); color: var(--gold); }
+
+    /* BURBUJAS */
+    .bubble { position: fixed; bottom: 25px; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 1000; transition: 0.3s; }
+    .bubble:hover { transform: scale(1.1); }
+    .bubble-ig { right: 85px; background: rgba(255,255,255,0.1); color: #fff; text-decoration: none; border: 1px solid rgba(255,255,255,0.2); }
+    .bubble-contact { right: 25px; background: #25d366; border: none; color: #fff; }
+
+    @media (max-width: 768px) {
+      .main-nav a:not(.btn-back) { display: none; }
+      .product-grid { grid-template-columns: 1fr; }
+      .cat-hero__title { font-size: 2.5rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html">YNES CABRERA</a>
+      <nav class="main-nav">
+        <a class="btn-back" href="index.html"><i class="fas fa-arrow-left"></i> Volver al inicio</a>
+        <a href="index.html#reservar" style="color: var(--gold);">Reservar</a>
+      </nav>
+    </div>
+  </header>
+
+  <header class="cat-hero">
+    <video autoplay muted loop playsinline>
+      <source src="oleohide1.mov" type="video/mp4">
+    </video>
+    <div class="cat-hero__title" data-aos="zoom-in">ÓLEOS</div>
+  </header>
+
+  <main class="products">
+    <div class="product-grid">
+      
+      <article class="product-card" data-aos="fade-up" data-obra="La Dama" data-cat="Óleos">
+        <div class="product-media">
+          <div class="img-container">
+            <img class="img-main" src="imagenesarte/cuadros/dama.jpg">
+            <img class="img-hover" src="imagenesarte/cuadros/damacolgada.png"> 
+          </div>
+          <a href="https://wa.me/519XXXXXXXXX?text=Hola,%20me%20gustaría%20saber%20más%20de%20este%20cuadro:%20La%20Dama" target="_blank" class="view-details">
+            <i class="fab fa-whatsapp"></i> Consultar
+          </a>
+        </div>
+        <div class="product-body">
+          <h3 class="product-title">LA DAMA</h3>
+          <span class="product-meta">S/ 600 • 60×40 cm</span>
+          <div class="buy-row">
+            <button class="buy-btn" data-buy="original">Comprar Obra</button>
+            <button class="buy-btn" data-buy="tarjeta">Tarjeta</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-aos="fade-up" data-aos-delay="100" data-obra="La Flor y El León" data-cat="Óleos">
+        <div class="product-media">
+          <div class="img-container">
+            <img class="img-main" src="imagenesarte/cuadros/leon.jpg">
+            <img class="img-hover" src="imagenesarte/cuadros/leoncolgado.png">
+          </div>
+          <a href="https://wa.me/519XXXXXXXXX?text=Hola,%20me%20gustaría%20saber%20más%20de%20este%20cuadro:%20La%20Flor%20y%20el%20León" target="_blank" class="view-details">
+            <i class="fab fa-whatsapp"></i> Consultar
+          </a>
+        </div>
+        <div class="product-body">
+          <h3 class="product-title">LA FLOR Y EL LEÓN</h3>
+          <span class="product-meta">S/ 600 • 60×80 cm</span>
+          <div class="buy-row">
+            <button class="buy-btn" data-buy="original">Comprar Obra</button>
+            <button class="buy-btn" data-buy="tarjeta">Tarjeta</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-aos="fade-up" data-aos-delay="200" data-obra="Tú en el atardecer" data-cat="Óleos">
+        <div class="product-media">
+          <div class="img-container">
+            <img class="img-main" src="imagenesarte/cuadros/playa1 (1).jpg">
+            <img class="img-hover" src="imagenesarte/cuadros/playacolgado.png">
+          </div>
+          <a href="https://wa.me/519XXXXXXXXX?text=Hola,%20me%20gustaría%20saber%20más%20de%20este%20cuadro:%20Tú%20en%20el%20atardecer" target="_blank" class="view-details">
+            <i class="fab fa-whatsapp"></i> Consultar
+          </a>
+        </div>
+        <div class="product-body">
+          <h3 class="product-title">TÚ EN EL ATARDECER</h3>
+          <span class="product-meta">S/ 950 • 100×78 cm</span>
+          <div class="buy-row">
+            <button class="buy-btn" data-buy="original">Comprar Obra</button>
+            <button class="buy-btn" data-buy="tarjeta">Tarjeta</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-aos="fade-up" data-obra="El Cristo" data-cat="Óleos">
+        <div class="product-media">
+          <div class="img-container">
+            <img class="img-main" src="imagenesarte/cuadros/jesus.jpg">
+            <img class="img-hover" src="imagenesarte/cuadros/jesuscolgado.png">
+          </div>
+          <a href="https://wa.me/519XXXXXXXXX?text=Hola,%20me%20gustaría%20saber%20más%20de%20este%20cuadro:%20El%20Cristo" target="_blank" class="view-details">
+            <i class="fab fa-whatsapp"></i> Consultar
+          </a>
+        </div>
+        <div class="product-body">
+          <h3 class="product-title">EL CRISTO</h3>
+          <span class="product-meta">S/ 675 • Óleo sobre lienzo</span>
+          <div class="buy-row">
+            <button class="buy-btn" data-buy="original">Comprar Obra</button>
+            <button class="buy-btn" data-buy="tarjeta">Tarjeta</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-aos="fade-up" data-aos-delay="100" data-obra="Girasol radiante" data-cat="Óleos">
+        <div class="product-media">
+          <div class="img-container">
+            <img class="img-main" src="imagenesarte/cuadros/girasol (1).jpg">
+            <img class="img-hover" src="imagenesarte/cuadros/girasolcolgado.png">
+          </div>
+          <a href="https://wa.me/519XXXXXXXXX?text=Hola,%20me%20gustaría%20saber%20más%20de%20este%20cuadro:%20Girasol%20Radiante" target="_blank" class="view-details">
+            <i class="fab fa-whatsapp"></i> Consultar
+          </a>
+        </div>
+        <div class="product-body">
+          <h3 class="product-title">GIRASOL RADIANTE</h3>
+          <span class="product-meta">S/ 300 • 50×50 cm</span>
+          <div class="buy-row">
+            <button class="buy-btn" data-buy="original">Comprar Obra</button>
+            <button class="buy-btn" data-buy="tarjeta">Tarjeta</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-aos="fade-up" data-aos-delay="200" data-obra="Paisaje de otoño" data-cat="Óleos">
+        <div class="product-media">
+          <div class="img-container">
+            <img class="img-main" src="imagenesarte/cuadros/paisajeverde (1).jpg">
+            <img class="img-hover" src="imagenesarte/cuadros/paisajeverdecolgado.png">
+          </div>
+          <a href="https://wa.me/519XXXXXXXXX?text=Hola,%20me%20gustaría%20saber%20más%20de%20este%20cuadro:%20Paisaje%20de%20Otoño" target="_blank" class="view-details">
+            <i class="fab fa-whatsapp"></i> Consultar
+          </a>
+        </div>
+        <div class="product-body">
+          <h3 class="product-title">PAISAJE DE OTOÑO</h3>
+          <span class="product-meta">S/ 270 • 70×50 cm</span>
+          <div class="buy-row">
+            <button class="buy-btn" data-buy="original">Comprar Obra</button>
+            <button class="buy-btn" data-buy="tarjeta">Tarjeta</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <a class="bubble bubble-contact" href="https://wa.me/519XXXXXXXXX" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.buy-btn');
+      if (!btn) return;
+      const card = btn.closest('.product-card');
+      const params = new URLSearchParams({ 
+        obra: card.dataset.obra, 
+        categoria: card.dataset.cat, 
+        tipo: btn.getAttribute('data-buy') 
+      });
+      location.href = `index.html?${params.toString()}#reservar`;
+    });
+  </script>
+</body>
+</html>

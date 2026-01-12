@@ -3,739 +3,243 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Juntos | Experiencias</title>
+  <title>JUNTOS | Regalos fuera de lo común</title>
 
-  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"> 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --color-primary: #d7a1a1;
       --color-accent: #b36b6b;
-      --color-dark: #111;
-      --color-light: #fff;
+      --color-dark: #2d2d2d;
       --font-title: 'Playfair Display', serif;
-      --font-body: 'Poppins', sans-serif;
+      --font-body: 'Outfit', sans-serif;
     }
 
     body {
-      margin: 0;
-      background-color: var(--color-light);
       font-family: var(--font-body);
       color: var(--color-dark);
+      margin: 0;
       overflow-x: hidden;
-      animation: fadeInPage 1.5s ease forwards;
-    }
-
-    @keyframes fadeInPage {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
     }
 
     /* =====================
-       HERO PRINCIPAL
+       HEADER COMPACTO
     ===================== */
-    .hero {
+    .navbar {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 0.5rem 5%;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .navbar-brand {
+      font-family: var(--font-title);
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+      color: var(--color-dark) !important;
+    }
+
+    /* =====================
+       HERO SLIM (MÁS CORTO)
+    ===================== */
+    .hero-creative {
       position: relative;
-      height: 90vh;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6)), 
-                  url('recursos/fogatamamaehijo.jpeg') center/cover no-repeat;
+      height: 55vh; /* REDUCIDO */
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       color: white;
-    }
-
-    .hero h1 {
-      font-family: var(--font-title);
-      font-size: 3.5rem;
-      letter-spacing: 2px;
-      color: var(--color-primary);
-      text-shadow: 0 3px 10px rgba(0,0,0,0.4);
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      margin-top: 1rem;
-      color: #f9f9f9;
-    }
-/* =====================
-    HEADER Y NAVEGACIÓN
-===================== */
-header {
-    width: 100%;
-    padding: 15px 50px; /* Espaciado horizontal y vertical */
-    position: absolute; /* Para que quede encima del Hero */
-    top: 0;
-    left: 0;
-    z-index: 10; /* Asegura que esté por encima de todo */
-    display: flex;
-    justify-content: space-between; /* Espacia el menú y el botón */
-    align-items: center;
-}
-/* ====== MENÚ HAMBURGUESA ====== */
-.menu-toggle {
-  display: none;
-  font-size: 1.8rem;
-  color: var(--color-light);
-  cursor: pointer;
-  z-index: 20;
-  background: none;
-  border: none;
-}
-
-/* Estado activo: cuando el menú está abierto */
-nav.active {
-  display: block;
-  position: absolute;
-  top: 70px;
-  left: 0;
-  width: 100%;
-  background-color: rgba(17, 17, 17, 0.95);
-  padding: 20px 0;
-  text-align: center;
-  animation: slideDown 0.4s ease forwards;
-}
-
-@keyframes slideDown {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Ocultar el nav en móviles inicialmente */
-@media (max-width: 992px) {
-  nav {
-    display: none;
-    width: 100%;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-
-  header {
-    flex-direction: row;
-    justify-content: space-between;
-    background: rgba(17, 17, 17, 0.9);
-  }
-
-  header nav ul {
-    flex-direction: column;
-    padding: 0;
-    gap: 12px;
-  }
-
-  header nav ul li a {
-    color: var(--color-light);
-    font-size: 1.1rem;
-  }
-}
-
-/* Estilo de la navegación principal (UL) */
-header nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 25px; /* Espacio entre enlaces */
-}
-
-/* Estilo de los enlaces */
-header nav ul li a {
-    color: var(--color-light); /* Blanco sobre el fondo oscuro del hero */
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.95rem;
-    padding: 5px 0;
-    transition: color 0.3s ease, border-bottom 0.3s ease;
-    border-bottom: 2px solid transparent; /* Para el efecto hover */
-}
-
-/* Efecto hover: Rosa suave */
-header nav ul li a:hover,
-header nav ul li a.active {
-    color: var(--color-primary); 
-    border-bottom-color: var(--color-primary);
-}
-
-/* Estilo del botón de WhatsApp en el Header */
-.btn-whatsapp {
-    background-color: var(--color-accent); /* Rojo/Rosa oscuro */
-    color: var(--color-light); 
-    border: none;
-    padding: 10px 20px;
-    border-radius: 50px;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.btn-whatsapp:hover {
-    background-color: var(--color-primary); /* Rosa más claro al pasar el ratón */
-    color: var(--color-dark);
-    transform: translateY(-2px);
-}
-
-/* Adaptación para móviles */
-@media (max-width: 992px) {
-    header {
-        flex-direction: column;
-        padding: 15px 20px;
-        position: relative; /* Puedes hacerlo relativo si el hero no ocupa toda la altura */
-        background: rgba(17, 17, 17, 0.9); /* Fondo oscuro semitransparente para legibilidad en móviles */
-    }
-
-    header nav ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 15px;
-    }
-    
-    header nav ul li a {
-        color: var(--color-light); /* Mantenemos el color claro sobre el nuevo fondo oscuro */
-    }
-}
-    /* =====================
-       SECCIÓN PRODUCTOS
-    ===================== */
-    section {
-      padding: 80px 20px;
-    }
-
-    .productos h2 {
-      text-align: center;
-      font-family: var(--font-title);
-      font-size: 2.5rem;
-      color: var(--color-accent);
-      margin-bottom: 2.5rem;
-    }
-
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      justify-items: center;
-    }
-
-    .product-card {
-      background-color: #fff;
-      border-radius: 20px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      padding: 0 10%;
       overflow: hidden;
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: linear-gradient(45deg, #b36b6b, #d7a1a1, #8e5a5a, #4a3333);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
     }
 
-    .product-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
-    .product-card img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-    }
-
-    .product-card-content {
-      padding: 20px;
-    }
-
-    .product-card-content h3 {
-      font-family: var(--font-title);
-      color: var(--color-dark);
-      font-size: 1.4rem;
-    }
-
-    .product-price {
-      color: var(--color-accent);
-      font-weight: 600;
-      margin: 10px 0;
-    }
-
-    .product-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    .btn {
-      border-radius: 40px;
-      padding: 8px 20px;
-      font-size: 0.9rem;
-      transition: all 0.3s ease;
-    }
-
-    .btn-secondary {
-      background-color: var(--color-accent);
-      color: #fff;
-      border: none;
-    }
-
-    .btn-secondary:hover {
-      background-color: var(--color-primary);
-      color: var(--color-dark);
-    }
-
-    .btn-ghost {
-      border: 2px solid var(--color-accent);
-      background: transparent;
-      color: var(--color-accent);
-    }
-
-    .btn-ghost:hover {
-      background-color: var(--color-accent);
-      color: #fff;
-    }
-
-    /* ====== TOPPING BOWL SECTION ====== */
-    .topping-bowl {
-      position: relative;
-      text-align: center;
-      padding: 100px 20px;
-      background: radial-gradient(circle at center, #fff6f6 0%, #ffeaea 100%);
-      overflow: hidden;
-    }
-
-    .topping-bowl h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.6rem;
-      color: #b36b6b;
-      margin-bottom: 1rem;
-    }
-
-    .topping-bowl p {
-      font-size: 1.1rem;
-      color: #333;
-      max-width: 600px;
-      margin: 0 auto 2rem auto;
-      line-height: 1.5;
-    }
-
-    .topping-bowl img {
-      width: 260px;
-      max-width: 80%;
-      filter: drop-shadow(0 10px 25px rgba(0,0,0,0.25));
-      z-index: 2;
-      position: relative;
-    }
-
-    .btn-topping {
-      display: inline-block;
-      margin-top: 25px;
-      padding: 0.9rem 2.3rem;
-      border-radius: 50px;
-      background-color: #b36b6b;
-      color: #fff;
-      font-weight: 600;
-      text-transform: uppercase;
-      transition: all 0.3s ease;
-      text-decoration: none;
-      box-shadow: 0 5px 15px rgba(179, 107, 107, 0.3);
-    }
-
-    .btn-topping:hover {
-      background-color: #d7a1a1;
-      color: #111;
-      transform: translateY(-4px);
-    }
-
-    /* ====== TOPPINGS ====== */
-    .topping-bowl .topping {
+    .hero-creative::after {
+      content: "";
       position: absolute;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      animation: float 6s ease-in-out infinite;
-      pointer-events: none;
-      z-index: 3;
-      transform: translate(-50%, -50%);
+      inset: 0;
+      background: url('https://www.transparenttextures.com/patterns/p6-mini.png');
+      opacity: 0.2;
+      z-index: 1;
     }
 
-    .topping-bowl .topping img {
-      width: 90px;
-      transition: transform 0.4s ease;
-      filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.25));
-    }
-
-    .topping-bowl .topping-name {
-      margin-top: 6px;
-      font-size: 0.95rem;
-      color: #fff;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
-      opacity: 0.95;
-      font-weight: 500;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translate(-50%, -50%) translateY(0); }
-      50% { transform: translate(-50%, -50%) translateY(-12px); }
-    }
-
-    @media (max-width: 768px) {
-      .topping-bowl img { width: 200px; }
-      .topping-bowl .topping img { width: 70px; }
-      .topping-bowl .topping-name { font-size: 0.8rem; }
-    }
-
-    /* ====== FAMILIA & PERSONALIZACIONES ====== */
-.familia-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: 50px;
-  padding: 100px 10%;
-  background: linear-gradient(135deg, #fff6f6 0%, #ffeaea 100%);
-}
-
-.familia-contenido {
-  text-align: left;
-}
-
-.familia-contenido h2 {
-  font-family: var(--font-title);
-  color: var(--color-accent);
-  font-size: 2.4rem;
-  margin-bottom: 20px;
-  line-height: 1.3;
-}
-
-.familia-contenido p {
-  font-size: 1.1rem;
-  color: #333;
-  line-height: 1.6;
-  margin-bottom: 25px;
-}
-
-.familia-imagenes {
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-}
-
-.familia-imagenes .img-columna {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.familia-imagenes img {
-  width: 100%;
-  border-radius: 20px;
-  object-fit: cover;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-  transition: transform 0.4s ease;
-}
-
-.familia-imagenes img:hover {
-  transform: scale(1.05);
-}
-
-/* ====== RESPONSIVE ====== */
-@media (max-width: 900px) {
-  .familia-section {
-    grid-template-columns: 1fr;
-    text-align: center;
-    padding: 70px 20px;
-  }
-
-  .familia-imagenes {
-    flex-direction: column;
-  }
-
-  .familia-contenido h2 {
-    font-size: 2rem;
-  }
-}
-
-/* ===== HERO CON FONDO CAMBIANTE ===== */
-.hero-fade {
-  position: relative;
-  height: 90vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  overflow: hidden;
-  color: white;
-}
-
-/* Las imágenes de fondo se cambian con opacidad */
-.hero-fade::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  animation: bgFade 24s infinite;
-  z-index: 0;
-}
-
-/* Gradiente encima para mantener legible el texto */
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.6));
-  z-index: 1;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-}
-
-.hero h1 {
-  font-family: var(--font-title);
-  font-size: 3.5rem;
-  letter-spacing: 2px;
-  color: var(--color-primary);
-  text-shadow: 0 3px 10px rgba(0,0,0,0.4);
-}
-
-.hero p {
-  font-size: 1.2rem;
-  margin-top: 1rem;
-  color: #f9f9f9;
-}
-
-/* ===== ANIMACIÓN DE CAMBIO DE IMAGEN ===== */
-@keyframes bgFade {
-  0%, 25% { background-image: url('recursos/fogata_mama_ehijo.jpeg'); }
-  26%, 50% { background-image: url('recursos/vasija_diagonal.jpg'); }
-  51%, 75% { background-image: url('recursos/desayuno.jpeg'); }
-  76%, 100% { background-image: url('recursos/floreadobeig.jpeg'); }
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
-  .hero h1 { font-size: 2.3rem; }
-  .hero p { font-size: 1rem; }
-}
+    .hero-content { position: relative; z-index: 2; max-width: 800px; }
+    .hero h1 { font-family: var(--font-title); font-size: clamp(2.2rem, 6vw, 3.5rem); margin-bottom: 15px; }
+    .hero p { font-size: clamp(1rem, 2vw, 1.2rem); margin-bottom: 25px; opacity: 0.9; }
 
     /* =====================
-       FOOTER
+       SECCIONES COMPACTAS
     ===================== */
-    footer {
+    section { padding: 40px 8%; } /* REDUCIDO DE 100PX A 40PX */
+
+    .section-title {
+      font-family: var(--font-title);
+      font-size: 2.2rem;
       text-align: center;
-      padding: 30px 20px;
-      color: #888;
+      margin-bottom: 30px; /* REDUCIDO */
+    }
+
+    .card-product { border: none; text-align: center; margin-bottom: 20px; }
+
+    .img-wrapper {
+      width: 100%;
+      aspect-ratio: 1/1;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+      margin-bottom: 15px;
+    }
+
+    .img-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+    .card-product:hover img { transform: scale(1.08); }
+
+    .btn-custom {
+      background: var(--color-accent);
+      color: white;
+      border-radius: 50px;
+      padding: 10px 30px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-block;
+      transition: 0.3s;
+      border: none;
       font-size: 0.9rem;
-      background: #fafafa;
+    }
+
+    .btn-custom:hover { background: var(--color-dark); color: white; transform: translateY(-3px); }
+
+    /* =====================
+       REGALO TURBO SLIM
+    ===================== */
+    .turbo-container {
+      background: #fdfaf9;
+      border-radius: 30px;
+      padding: 30px; /* REDUCIDO */
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .turbo-img-box { flex: 0 0 250px; } /* MÁS PEQUEÑO */
+    .turbo-img-box img { width: 100%; border-radius: 15px; }
+    .turbo-info { flex: 1; }
+    .turbo-info h2 { font-family: var(--font-title); font-size: 2rem; margin: 10px 0; }
+
+    /* =====================
+       RESPONSIVO
+    ===================== */
+    @media (max-width: 768px) {
+      .turbo-container { flex-direction: column; text-align: center; }
+      .turbo-img-box { max-width: 200px; }
+      section { padding: 30px 5%; }
+      .hero-creative { height: 50vh; }
     }
   </style>
 </head>
 
 <body>
 
-<header>
-  <div class="logo">
-    <img src="recursos/logo.png" alt="Logo Juntos" height="50">
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">JUNTOS</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#experiencias">Experiencias</a></li>
+        <li class="nav-item"><a class="nav-link" href="#turbo">Regalo Turbo ⚡</a></li>
+        <li class="nav-item"><a class="nav-link ms-lg-3 btn-custom" style="padding: 6px 20px;" href="https://wa.me/51913870416">WhatsApp</a></li>
+      </ul>
+    </div>
   </div>
+</nav>
 
-  <button class="menu-toggle" id="menu-toggle">
-    <i class="fa-solid fa-bars"></i>
-  </button>
-
-  <nav id="nav-menu">
-    <ul>
-      <li><a href="index.html" class="active">Inicio</a></li>
-      <li><a href="experiencias.html">Experiencias</a></li>
-      <li><a href="productos.html">Productos</a></li>
-      <li><a href="contacto.html">Contacto</a></li>
-    </ul>
-  </nav>
-
-  <a href="https://wa.me/51999999999" class="btn-whatsapp">WhatsApp</a>
-</header>
-
-  <!-- HERO -->
-<!-- HERO con fondo animado -->
-<section class="hero hero-fade">
-  <div class="hero-overlay"></div>
-  <nav id="mainNav"></nav>
-  <div class="hero-content">
-    <h1>Experiencias que se sienten</h1>
-    <p>Regalos que cuentan historias, creados con alma y propósito.</p>
+<section class="hero-creative">
+  <div class="hero-content" data-aos="fade-up">
+    <h1>Detalles con Propósito</h1>
+    <p>Hacemos más que regalos genéricos. Creamos piezas únicas para personas auténticas.</p>
+    <a href="#experiencias" class="btn-custom">Ver Catálogo</a>
   </div>
 </section>
 
-
-  <!-- EXPERIENCIAS -->
-   <div class="menu-toggle" id="menuToggle">
-    <i class="fas fa-bars"></i>
-</div>
-  <section class="productos" id="productos">
-    <div class="container">
-      <h2>Experiencias Juntos</h2>
-      <div class="products-grid">
-        <!-- Fogata -->
-        <div class="product-card">
-          <img src="recursos/fogatayahecha.jpg" alt="Kit Fogata">
-          <div class="product-card-content">
-            <h3>Kit de Fogata en casa</h3>
-            <p class="product-price">S/ 127.00</p>
-            <div class="product-buttons">
-              <a href="https://wa.me/51913870416?text=Hola,%20quiero%20comprar%20el%20Kit%20de%20Fogata." target="_blank" class="btn btn-secondary">Comprar</a>
-              <button class="btn btn-ghost">Ver más</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Yeso -->
-        <div class="product-card">
-          <img src="recursos/yeso-1.png" alt="Manos eternas">
-          <div class="product-card-content">
-            <h3>Manos Eternas en Yeso</h3>
-            <p class="product-price">S/ 70.00</p>
-            <div class="product-buttons">
-              <a href="https://wa.me/51913870416?text=Hola,%20quiero%20comprar%20el%20kit%20de%20Manos%20Eternas." target="_blank" class="btn btn-secondary">Comprar</a>
-              <button class="btn btn-ghost">Ver más</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Desayuno -->
-        <div class="product-card">
-          <img src="recursos/desayuno.jpeg" alt="Desayuno Juntos">
-          <div class="product-card-content">
-            <h3>Desayuno Juntos</h3>
-            <p class="product-price">Desde S/ 25.00</p>
-            <div class="product-buttons">
-              <a href="https://wa.me/51913870416?text=Hola,%20me%20interesa%20un%20Desayuno%20Juntos." target="_blank" class="btn btn-secondary">Cotizar</a>
-              <button class="btn btn-ghost">Ver más</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Personalizado -->
-        <div class="product-card">
-          <img src="recursos/collage.jpeg" alt="Regalos juntos">
-          <div class="product-card-content">
-            <h3>Regalos Personalizados</h3>
-            <p class="product-price">Desde S/ 25.00</p>
-            <div class="product-buttons">
-              <a href="https://wa.me/51913870416?text=Hola,%20quiero%20un%20regalo%20personalizado." target="_blank" class="btn btn-secondary">Cotizar</a>
-              <button class="btn btn-ghost">Ver más</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TOPPING BOWL -->
-  <section class="topping-bowl" id="topping-bowl">
-    <h2>Crea tu Bowl con Toppings</h2>
-    <p>Elige tu vasija favorita y personalízala con toppings únicos: caramelos, fotos, luces, piedritas y más. 
-      Cada topping desde <strong>S/5</strong>. Crea algo tan único como tú.</p>
-
-    <div style="position: relative; display: inline-block;">
-      <img src="recursos/vasija_cilindrica.png" alt="Topping Bowl">
-
-      <!-- Toppings flotantes alrededor -->
-      <div class="topping" style="top: 15%; left: 65%; animation-delay: 0s;">
-        <img src="recursos/caramelo.png" alt="Caramelos">
-        <span class="topping-name">Caramelos</span>
-      </div>
-
-      <div class="topping" style="top: 25%; left: 35%; animation-delay: 1s;">
-        <img src="recursos/fotos.png" alt="Fotitos personalizadas">
-        <span class="topping-name">Fotitos</span>
-      </div>
-
-      <div class="topping" style="top: 70%; left: 30%; animation-delay: 2s;">
-        <img src="recursos/piedrita.png" alt="Piedritas de colores">
-        <span class="topping-name">Piedritas</span>
-      </div>
-
-      <div class="topping" style="top: 68%; left: 75%; animation-delay: 3s;">
-        <img src="recursos/flores.png" alt="Flores decorativas">
-        <span class="topping-name">Flores</span>
-      </div>
+<section id="experiencias">
+  <h2 class="section-title">Experiencias Juntos</h2>
+  <div class="row g-4">
+    <div class="col-md-4 card-product" data-aos="fade-up">
+      <div class="img-wrapper"><img src="recursos/fogatayahecha.jpg"></div>
+      <h3>Kit de Fogata</h3>
+      <div class="fw-bold mb-2">S/ 127.00</div>
+      <a href="https://wa.me/51913870416?text=Quiero el Kit de Fogata" class="btn-custom">Lo quiero</a>
     </div>
 
-    <a href="https://wa.me/51913870416?text=Hola,%20quiero%20crear%20mi%20Topping%20Bowl%20personalizado." target="_blank" class="btn-topping">Empieza tu creación</a>
-  </section>
-
-<!-- SECCIÓN FAMILIA Y PERSONALIZACIONES -->
-<section class="familia-section" id="familia-section">
-  <div class="familia-contenido">
-    <h2>Algunos de nuestros bowls<br>y personalizaciones favoritas 💖</h2>
-    <p>
-      Cada creación tiene una historia. En <strong>Juntos</strong>, transformamos simples vasijas 
-      en recuerdos únicos, llenos de color, emoción y mucho cariño.  
-      <br><br>
-      Explora algunas de las personalizaciones de nuestra familia de creadores 🌸
-    </p>
-    <a href="https://wa.me/51913870416?text=Hola,%20quiero%20personalizar%20mi%20bowl%20como%20los%20de%20la%20familia%20Juntos." 
-       target="_blank" class="btn-topping">
-      Crea el tuyo
-    </a>
-  </div>
-
-  <div class="familia-imagenes">
-    <div class="img-columna">
-      <img src="recursos/personalizacion_navideña.png" alt="Bowl personalizado 1">
-      <img src="recursos/capibara.jpeg" alt="Bowl personalizado 2">
+    <div class="col-md-4 card-product" data-aos="fade-up" data-aos-delay="100">
+      <div class="img-wrapper"><img src="recursos/yeso-1.png"></div>
+      <h3>Manos Eternas</h3>
+      <div class="fw-bold mb-2">S/ 70.00</div>
+      <a href="https://wa.me/51913870416?text=Quiero el Kit Manos Eternas" class="btn-custom">Lo quiero</a>
     </div>
-    <div class="img-columna">
-      <img src="recursos/floreadobeig.jpeg" alt="Bowl personalizado 3">
-      <img src="recursos/navideño.jpeg" alt="Bowl personalizado 4">
+
+    <div class="col-md-4 card-product" data-aos="fade-up" data-aos-delay="200">
+      <div class="img-wrapper"><img src="recursos/desayuno.jpeg"></div>
+      <h3>Desayuno Juntos</h3>
+      <div class="fw-bold mb-2">Desde S/ 55.00</div>
+      <a href="https://wa.me/51913870416?text=Quiero cotizar un Desayuno" class="btn-custom">Cotizar</a>
     </div>
   </div>
 </section>
 
-  <!-- FOOTER -->
-  <footer>© 2025 Juntos — Detalles con propósito.</footer>
+<section id="turbo" style="padding-top: 10px;"> <div class="turbo-container" data-aos="fade-up">
+    <div class="turbo-img-box">
+      <img src="recursos/vasija_cilindrica.png" alt="Regalo Turbo">
+    </div>
+    <div class="turbo-info">
+      <span style="color: var(--color-accent); font-weight: 700; font-size: 0.8rem;">ENTREGA EN 24H</span>
+      <h2>Regalo Turbo ⚡</h2>
+      <p style="font-size: 0.95rem; margin-bottom: 15px;">
+        ¿Poco tiempo? Creamos un bowl basado en sus <b>colores y gustos favoritos</b>. Fuera de lo común y listo para sorprender.
+      </p>
+      <div class="fs-4 fw-bold mb-3">S/ 35.00</div>
+      <a href="https://wa.me/51913870416?text=Necesito un Regalo Turbo!" class="btn-custom">Pedir WhatsApp</a>
+    </div>
+  </div>
+</section>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
-// Lógica de JavaScript para el Menú Hamburguesa
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuToggle = document.getElementById('menuToggle');
-            const mainNav = document.getElementById('mainNav');
-            const navLinks = mainNav.querySelectorAll('a');
+<section id="bowls">
+  <div class="row g-3">
+    <div class="col-6 col-md-3" data-aos="zoom-in"><div class="img-wrapper"><img src="recursos/personalizacion_navideña.png"></div></div>
+    <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="50"><div class="img-wrapper"><img src="recursos/capibara.jpeg"></div></div>
+    <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="100"><div class="img-wrapper"><img src="recursos/floreadobeig.jpeg"></div></div>
+    <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="150"><div class="img-wrapper"><img src="recursos/navideño.jpeg"></div></div>
+  </div>
+</section>
 
-            // 1. Alternar la clase 'active' al hacer clic en el botón
-            menuToggle.addEventListener('click', function() {
-                mainNav.classList.toggle('active');
-                // Alternar el ícono entre hamburguesa y 'X'
-                if (mainNav.classList.contains('active')) {
-                    menuToggle.innerHTML = '<i class="fas fa-times"></i>'; // Icono de cerrar
-                } else {
-                    menuToggle.innerHTML = '<i class="fas fa-bars"></i>'; // Icono de hamburguesa
-                }
-            });
+<footer style="background: #1a1a1a; color: white; padding: 30px; text-align: center; font-size: 0.8rem;">
+  <div style="font-family: var(--font-title); font-size: 1.2rem; margin-bottom: 10px; letter-spacing: 2px;">JUNTOS</div>
+  <p style="opacity: 0.5; margin: 0;">Regalos fuera de lo común. Lima, Perú.</p>
+</footer>
 
-            // 2. Cerrar el menú al hacer clic en un enlace (para facilitar la navegación en la misma página)
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    if (mainNav.classList.contains('active')) {
-                         mainNav.classList.remove('active');
-                         menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-                    }
-                });
-            });
-        });
-
-        // ... (Tu otro JS para el carousel y fade-out si se agrega a este archivo) ...
-    </script>
-    <script>
-  const toggleBtn = document.getElementById('menu-toggle');
-  const navMenu = document.getElementById('nav-menu');
-
-  toggleBtn.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    toggleBtn.querySelector('i').classList.toggle('fa-bars');
-    toggleBtn.querySelector('i').classList.toggle('fa-xmark');
-  });
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 800, once: true });
 </script>
 
 </body>
