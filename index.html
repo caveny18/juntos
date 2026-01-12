@@ -3,320 +3,235 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>JUNTOS — Regalos, Recordatorios y Experiencias</title>
-    <meta name="description" content="Nunca olvides un regalo importante. Te recordamos fechas especiales, proponemos ideas y coordinamos todo por WhatsApp." />
-
+    <title>JUNTOS — El Arte de Vivir</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,400&family=Outfit:wght@100;300;400;600&display=swap" rel="stylesheet">
 
     <style>
-        :root{
-            /* Colores ajustados para mayor contraste y sofisticación */
-            --rosa-principal: #D8476B; /* Rosa profundo para acentos */
-            --gris-texto:    #CCC;    /* Gris claro para texto secundario */
-            --gris-oscuro:   #121212; /* Fondo muy oscuro */
-            --negro:         #000000;
-            --blanco:        #ffffff;
-            
-            /* Tarjeta altamente opaca para asegurar legibilidad */
-            --card-bg-dark: rgba(0, 0, 0, 0.9); /* Opacidad al 90% */
-            --card-border-light: rgba(255, 255, 255, 0.1); 
+        :root {
+            --accent: #D8476B;
+            --whatsapp: #25D366; /* Verde oficial */
+            --bg: #080808;
+            --white: #ffffff;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        body, html { 
+            margin: 0; padding: 0; min-height: 100vh;
+            font-family: 'Outfit', sans-serif; 
+            background: var(--bg); 
+            color: var(--white);
+            scroll-behavior: smooth;
+        }
+
+        .top-bar {
+            position: fixed; top: 0; width: 100%; z-index: 100;
+            background: var(--accent); color: white;
+            font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.3em;
+            padding: 10px; text-align: center; font-weight: 600;
+        }
+
+        .hero-bg {
+            position: fixed; inset: 0; z-index: -1;
+            filter: brightness(0.35) saturate(0.9);
+        }
+        .hero-bg img {
+            position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+            opacity: 0; transition: opacity 2.5s ease-in-out;
+        }
+        .hero-bg img.active { opacity: 1; }
+        
+        .overlay-gradient {
+            position: fixed; inset: 0; z-index: 0;
+            background: radial-gradient(circle at center, transparent 0%, var(--bg) 95%);
+        }
+
+        .container {
+            position: relative; z-index: 10;
+            max-width: 520px; margin: 0 auto;
+            padding: 100px 24px 60px;
+            display: flex; flex-direction: column; align-items: center;
+        }
+
+        header { text-align: center; margin-bottom: 50px; }
+        .brand-label { 
+            font-size: 0.7rem; letter-spacing: 0.5em; text-transform: uppercase; 
+            color: var(--accent); margin-bottom: 20px; font-weight: 600;
+        }
+        h1 { 
+            font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 300;
+            margin: 0; line-height: 0.85; font-style: italic;
+        }
+        .intro-text {
+            font-size: 0.9rem; font-weight: 200; color: #ccc;
+            margin-top: 25px; line-height: 1.7; max-width: 380px;
+        }
+
+        nav { width: 100%; display: flex; flex-direction: column; gap: 14px; }
+        
+        /* Estilo base de cartas */
+        .nav-card {
+            position: relative;
+            padding: 24px 30px;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            backdrop-filter: blur(15px);
+            display: flex; justify-content: space-between; align-items: center;
+            text-decoration: none; color: var(--white);
+            transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+            overflow: hidden;
         }
         
-        /* Reset y Base */
-        * { box-sizing: border-box; }
-        html, body { 
-            /* Se remueve height: 100% para permitir scroll si el contenido lo requiere */
-            min-height: 100vh; /* Mejor que height: 100% */
-            margin: 0; 
-            font-family: 'Poppins', sans-serif; 
-            background: var(--gris-oscuro); 
-            color: var(--blanco); 
-            -webkit-font-smoothing: antialiased; 
-            overflow-x: hidden; /* Evita el scroll horizontal en móviles */
-        }
-        a { color: inherit; text-decoration: none; }
-
-        /* Layout */
-        .wrap { 
-            min-height: 100vh; 
-            display: flex; 
-            /* Uso de 'flex-start' en lugar de 'center' en mobile para mejor posicionamiento */
-            align-items: center; 
-            justify-content: center; 
-            position: relative; 
-            padding: 24px;
-            /* Se asegura que el wrap pueda contener el scroll en pantallas muy pequeñas */
-            overflow-y: auto; 
+        .nav-card:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-3px);
         }
 
-        /* ------------------------------------------- */
-        /* Background carousel y Overlay (sin cambios funcionales) */
-        /* ------------------------------------------- */
-        .bg { position: fixed; inset: 0; z-index: -2; overflow: hidden; }
-        .bg img{
-            position: absolute; inset: 0 auto auto 0; width: 100%; height: 100%; object-fit: cover;
-            opacity: 0; transform: scale(1.02);
-            transition: opacity 2s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 12s linear;
-            will-change: opacity, transform;
+        /* EFECTO WHATSAPP */
+        .nav-card.whatsapp-glow {
+            border-color: rgba(37, 211, 102, 0.15);
         }
-        .bg img.show { opacity: 1; transform: scale(1.06); } 
-        
-        /* Overlay más agresivo para asegurar legibilidad */
-        .bg::after{
-            content: ""; position: absolute; inset: 0;
-            background: radial-gradient(circle at center, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.95) 100%);
-            z-index: 1; pointer-events: none;
+        .nav-card.whatsapp-glow:hover {
+            border-color: var(--whatsapp);
+            background: rgba(37, 211,  green, 0.05);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.1);
+        }
+        .nav-card.whatsapp-glow:hover .sub-label {
+            color: var(--whatsapp);
+        }
+        .nav-card.whatsapp-glow:hover .arrow-icon {
+            color: var(--whatsapp);
+            opacity: 1;
         }
 
-        /* ------------------------------------------- */
-        /* Tarjeta Central (Contraste Máximo) */
-        /* ------------------------------------------- */
-        .card {
-            width: 100%;
-            max-width: 550px; 
-            padding: 45px;
-            border-radius: 12px;
-            text-align: center;
-            
-            background: var(--card-bg-dark); 
-            color: var(--blanco); /* Base del texto es BLANCO */
-            border: 1px solid var(--card-border-light);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.7); 
-            
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInTop 0.8s ease-out 0.2s forwards;
+        .nav-card .main-label { 
+            font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; display: block;
         }
-        @keyframes fadeInTop {
-            to { opacity: 1; transform: translateY(0); }
+        .nav-card .sub-label { 
+            font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.25em; 
+            color: var(--accent); margin-top: 6px; display: block; font-weight: 600;
+            transition: color 0.4s ease;
         }
 
-        /* Marca y Contenido */
-        .brand {
-            display: block; 
-            margin-bottom: 25px;
+        .nav-card.priority {
+            background: var(--white);
+            color: var(--bg);
+            border: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
-        .logo {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--rosa-principal); 
-            margin-bottom: 5px;
+        .nav-card.priority .sub-label { color: #777; }
+        .nav-card.priority:hover { background: #f5f5f5; transform: scale(1.02); }
+
+        .quote-box {
+            margin: 60px 0; text-align: center;
+            padding: 0 20px; border-left: 1px solid var(--accent);
         }
-        
-        /* Titular: ¡SOLUCIÓN AGRESIVA! FORZAMOS BLANCO */
-        .card .brand h1 {
-            font-family: 'Playfair Display', serif; 
-            font-size: 3rem; 
-            font-weight: 700;
-            margin: 0; 
-            color: var(--blanco) !important; 
-            line-height: 1.1;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5); 
-        }
-        
-        /* Párrafo: ¡SOLUCIÓN AGRESIVA! FORZAMOS GRIS CLARO */
-        .card .brand p {
-            margin: 18px auto 0 auto; 
-            color: var(--gris-texto) !important; 
-            max-width: 450px; 
-            font-weight: 400;
-            font-size: 1.05rem;
-            line-height: 1.6;
+        .quote-box p {
+            font-family: 'Cormorant Garamond', serif; font-size: 1.3rem;
+            font-style: italic; color: #999; line-height: 1.4;
         }
 
-        /* CTA buttons */
-        .ctas { 
-            display: flex; 
-            flex-direction: column; 
-            gap: 15px; 
-            margin-top: 30px;
-        }
-        .btn {
-            padding: 16px 24px; 
-            border-radius: 8px; 
-            font-weight: 600; 
-            letter-spacing: 1.2px; 
-            cursor: pointer;
-            border: 2px solid transparent; 
-            transition: all 300ms ease;
-            display: inline-flex; align-items: center; justify-content: center; 
-            font-size: 16px;
-            text-transform: uppercase;
-            width: 100%; /* Asegura que los botones sean 100% de ancho */
-        }
-        
-        /* Botón Principal (Persona) */
-        .btn-persona {
-            background: var(--rosa-principal);
-            color: var(--blanco); 
-            box-shadow: 0 4px 15px rgba(216, 71, 107, 0.5);
-        }
-        .btn-persona:hover{ 
-            transform: translateY(-2px); 
-            background: #FF6B8B;
-            box-shadow: 0 8px 20px rgba(216, 71, 107, 0.6); 
-        }
+        .arrow-icon { font-size: 0.8rem; opacity: 0.4; transition: 0.4s; }
+        .nav-card:hover .arrow-icon { opacity: 1; transform: translateX(5px); }
 
-        /* Botón Secundario (Empresa) */
-        .btn-empresa {
-            background: rgba(255,255,255,0.08); 
-            color: var(--blanco); 
-            border: 1px solid var(--card-border-light); 
+        @media (max-width: 480px) {
+            h1 { font-size: 2.8rem; }
+            .container { padding-top: 80px; }
+            .nav-card { padding: 20px 24px; }
         }
-        .btn-empresa:hover{ 
-            background: rgba(255,255,255,0.15); 
-            transform: translateY(-2px); 
-        }
-
-        /* small whatsapp link */
-        .whatsapp {
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            gap: 8px; 
-            padding: 10px 14px; 
-            border-radius: 999px; 
-            color: var(--blanco); 
-            background: rgba(255,255,255,0.1); 
-            font-weight: 400; 
-            font-size: 0.9rem; 
-            margin-top: 25px; 
-            border: 1px solid var(--card-border-light);
-            width: 100%;
-        }
-        .whatsapp:hover { 
-            background: rgba(255,255,255,0.2); 
-        }
-        .whatsapp svg path { 
-            fill: var(--blanco); 
-        }
-
-
-        /* ------------------------------------------- */
-        /* Media Query para Móviles (< 650px) */
-        /* ------------------------------------------- */
-        @media(max-width:650px){
-            /* Mejora en la alineación del 'wrap' para asegurar que la tarjeta esté visible incluso si la pantalla es muy corta */
-            .wrap { 
-                align-items: flex-start; /* Empieza arriba */
-                padding: 40px 15px; /* Más padding vertical y menos horizontal */
-            }
-            .card { 
-                padding: 30px 20px; /* Reducido para móviles */
-                max-width: 100%; 
-                margin: 0; /* Centrado por el wrap, no necesita margin */
-            }
-            .logo {
-                font-size: 1rem;
-            }
-            .brand h1 { 
-                font-size: 2rem; /* Título más pequeño y conciso */
-            }
-            .brand p { 
-                font-size: 0.9rem; /* Texto de párrafo más adecuado */
-            }
-            .ctas { 
-                margin-top: 25px; 
-            }
-            .btn { 
-                padding: 14px 20px; 
-                font-size: 14px; /* Botones ligeramente más pequeños */
-                letter-spacing: 1px;
-            }
-            .whatsapp { 
-                margin-top: 20px; 
-                font-size: 0.85rem;
-                padding: 8px 14px;
-            }
-        }
-
-        /* page fade-out on nav */
-        .page-fade { transition: opacity .7s ease-in-out, transform .7s ease-in-out; }
-        .page-fade.out { opacity: 0; transform: scale(1.02) translateY(-10px); pointer-events: none }
-        
-        .vh{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
     </style>
 </head>
 <body>
 
-    <div class="wrap page-fade" id="page">
-        <div class="bg" aria-hidden="true">
-            <img src="recursos/vasija_de_plato.png" alt="Vasija de plato en un ambiente elegante" class="show" data-index="0">
-            <img src="recursos/vasija_diagonal.jpg" alt="Vasija moderna con corte diagonal" data-index="1">
-            <img src="recursos/fogata_mama_ehijo.jpeg" alt="Kit de fogata para regalo" data-index="2">
-            <img src="recursos/vasijacilindromediano.png" alt="Vasija cilíndrica mediana de diseño" data-index="3">
-        </div>
-<div class="card" role="region" aria-label="Selección de inicio Juntos">
-    <div class="brand" aria-hidden="false">
-        <div class="logo" aria-hidden="true">JUNTOS</div>
-        
-        <h1 style="color: #FFFFFF !important;">¿Qué buscas hoy en JUNTOS</h1>
-        
-        <p style="color: #CCCCCC !important;">La <strong>solución elegante</strong> para que nunca olvides una fecha importante. Te recordamos y coordinamos la entrega completa de tus productos por WhatsApp.</p>
+    <div class="top-bar">
+        Únete a nuestro grupo de whatsapp y JUNTOS haremos de nuestra casa un HOGAR
     </div>
 
-    <div class="ctas" aria-hidden="false">
-        <button class="btn btn-persona" id="btnPersona" data-target="cliente.html" aria-label="Ir a clientes — Soy una persona que busca un regalo" style="color: #FFFFFF !important;">
-            REGALOS PERSONALES
-        </button>
-        <button class="btn btn-empresa" id="btnEmpresa" data-target="empresa.html" aria-label="Ir a empresas — Soy una empresa" style="color: #FFFFFF !important;">
-            Soy una empresa
-        </button>
+    <div class="hero-bg" id="bg-slides">
+        <img src="recursos/happi1.jpg" class="active">
+        <img src="recursos/juntos.png">
     </div>
-    
-    <a class="whatsapp" id="waQuick" href="https://wa.me/51960778888?text=Hola!%20Quiero%20más%20info%20sobre%20Juntos" target="_blank" rel="noopener noreferrer" aria-label="Contactar a Juntos directamente por WhatsApp" style="color: #FFFFFF !important;">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.5 3.5C18.2 1.2 15.1 0 12 0 5.4 0 0 5.4 0 12c0 2 .5 3.9 1.5 5.6L0 24l6.7-1.5C9.9 23 10.9 23.5 12 23.5 18.6 23.5 24 18.1 24 11.5c0-3.1-1.2-6.2-3.5-8zm-8.5 16c-1.2 0-2.4-.3-3.5-.8l-.3-.2-4 .9 1-3.6-.2-.3C3.3 13.2 3 12.1 3 11c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8z" fill="#fff"/></svg>
-        CHATEAR CON UN ASESOR
-    </a>
-</div>
+    <div class="overlay-gradient"></div>
+
+    <main class="container">
+        <header>
+            <div class="brand-label">Juntos — Arte • Casa • Regalos</div>
+            <h1>Juntos</h1>
+            <div class="intro-text">
+                Bienvenidos a nuestro refugio creativo. Donde el barro, el óleo y las manos se unen para contar tu historia.
+            </div>
+        </header>
+
+        <nav>
+            <a href="https://wa.me/51960778888?text=Hola!%20Quiero%20realizar%20un%20pedido" class="nav-card priority">
+                <div>
+                    <span class="main-label">Hacer un Pedido</span>
+                    <span class="sub-label">Atención Personalizada</span>
+                </div>
+                <span class="arrow-icon">↗</span>
+            </a>
+
+            <a href="https://chat.whatsapp.com/Bv7kfmv3kpWA8iKewfH45T" class="nav-card whatsapp-glow">
+                <div>
+                    <span class="main-label">Grupo de Whatsapp</span>
+                    <span class="sub-label">Comunidad & Tips exclusivos</span>
+                </div>
+                <span class="arrow-icon">→</span>
+            </a>
+
+            <a href="#" class="nav-card">
+                <div>
+                    <span class="main-label">Decoración del Hogar</span>
+                    <span class="sub-label">Hecho a mano</span>
+                </div>
+                <span class="arrow-icon">→</span>
+            </a>
+
+            <a href="#" class="nav-card">
+                <div>
+                    <span class="main-label">Accesorios de Diseño</span>
+                    <span class="sub-label">Arte en barro</span>
+                </div>
+                <span class="arrow-icon">→</span>
+            </a>
+
+            <a href="cliente.html" class="nav-card">
+                <div>
+                    <span class="main-label">Regalos & Experiencias</span>
+                    <span class="sub-label">Momentos inolvidables</span>
+                </div>
+                <span class="arrow-icon">→</span>
+            </a>
+            
+            <a href="empresa.html" class="nav-card">
+                <div>
+                    <span class="main-label">Cuadros al Óleo</span>
+                    <span class="sub-label">Piezas originales</span>
+                </div>
+                <span class="arrow-icon">→</span>
+            </a>
+        </nav>
+
+        <section class="quote-box">
+            <p>"Un objeto solo es arte cuando logra que las personas se sientan Juntos."</p>
+        </section>
+
+    </main>
 
     <script>
-        // Carousel logic (crossfade)
-        (function(){
-            const imgs = Array.from(document.querySelectorAll('.bg img'));
-            let idx = 0;
-            const delay = 5000;
-
-            // Preload images (helps ensure they show on different environments)
-            imgs.forEach(i => {
-                const src = i.getAttribute('src');
-                const img = new Image();
-                img.src = src;
-            });
-
-            setInterval(() => {
-                const prev = imgs[idx];
-                prev.classList.remove('show');
-                idx = (idx + 1) % imgs.length;
-                const next = imgs[idx];
-                next.classList.add('show');
-            }, delay);
-
-            // Smooth navigation: fade out then navigate
-            function navigateWithFade(target){
-                const page = document.getElementById('page');
-                page.classList.add('out');
-                setTimeout(() => { window.location.href = target; }, 700); 
-            }
-
-            document.getElementById('btnPersona').addEventListener('click', () => {
-                navigateWithFade('cliente.html');
-            });
-            document.getElementById('btnEmpresa').addEventListener('click', () => {
-                navigateWithFade('empresa.html');
-            });
-
-            // Accessibility: keyboard support (Enter)
-            [ 'btnPersona', 'btnEmpresa' ].forEach(id=>{
-                const el = document.getElementById(id);
-                el.addEventListener('keydown', (e)=>{
-                    if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); el.click(); }
-                });
-            });
-        })();
+        const images = document.querySelectorAll('#bg-slides img');
+        let currentImg = 0;
+        function nextSlide() {
+            images[currentImg].classList.remove('active');
+            currentImg = (currentImg + 1) % images.length;
+            images[currentImg].classList.add('active');
+        }
+        setInterval(nextSlide, 5000);
     </script>
 </body>
 </html>
