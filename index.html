@@ -178,6 +178,27 @@
             .container { padding-top: 80px; }
             .nav-card { padding: 20px 24px; }
         }
+/* Estilo para el apartado de socio un poco más visible */
+        .socio-link {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 1rem; /* Un poco más grande */
+            text-decoration: none;
+            color: var(--white);
+            opacity: 0.4; /* Menos transparente */
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            z-index: 100;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .socio-link:hover {
+            opacity: 1;
+            color: var(--accent); /* Cambia al color rosa de tu marca al pasar el mouse */
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
@@ -268,5 +289,6 @@
         }
         setInterval(nextSlide, 5000);
     </script>
+<a href="https://script.google.com/macros/s/AKfycbwIJvGRh5D68HRnGuTe3J1X1JMOPvcByrNpn5NwQfcpAukq8ODtv8LD3jsBRcwBOOJZ/exec" class="socio-link">Socio</a>
 </body>
 </html>
